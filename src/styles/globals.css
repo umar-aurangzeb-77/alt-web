@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: var(--font-syne);
+  --font-body: var(--font-dm);
+  --font-mono: var(--font-mono);
+  
+  --color-brand-blue: #003459;
+  --color-brand-cream: #F1F0EA;
+
+  /* Map standard variables to Tailwind colors */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --color-accent: var(--accent);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-glow: var(--accent-glow);
+}
+
+:root {
+  /* Brand-Centric Palette */
+  --bg: #001f35; /* Darker variant of brand-blue for background */
+  --surface: #003459; /* Brand-blue as primary surface */
+  --surface-2: #004271;
+  --surface-3: #005089;
+  
+  --border: rgba(241, 240, 234, 0.1); /* Brand-cream with opacity */
+  --border-hover: rgba(241, 240, 234, 0.25);
+  
+  --text-primary: #F1F0EA; /* Brand-cream as primary text */
+  --text-secondary: rgba(241, 240, 234, 0.7);
+  --text-muted: rgba(241, 240, 234, 0.5);
+  
+  --accent: #00a8e8; /* More vibrant light blue for contrast */
+  --accent-secondary: #F1F0EA;
+  --accent-glow: rgba(0, 168, 232, 0.15);
+}
+
+html.light {
+  --bg: #F1F0EA; /* Brand-cream as background */
+  --surface: #ffffff;
+  --surface-2: #e8e7e1;
+  --surface-3: #dfded7;
+  
+  --border: rgba(0, 52, 89, 0.1); /* Brand-blue with opacity */
+  --border-hover: rgba(0, 52, 89, 0.2);
+  
+  --text-primary: #003459; /* Brand-blue as text */
+  --text-secondary: #004271;
+  --text-muted: #64748b;
+  
+  --accent: #003459;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  line-height: 1.6;
+}
+
+@layer base {
+  /* Typography Design */
+  h1, .h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    text-transform: none;
+  }
+
+  h2, .h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  h3, .h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Premium Utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.accent-gradient {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+}
+
+.card-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.card-shadow-hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* No-scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
