@@ -7,8 +7,9 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+import Dither from "@/components/ui/Dither";
 
+gsap.registerPlugin(ScrollTrigger);
 
 interface Props {}
 
@@ -17,7 +18,11 @@ export default function Hero({}: Props) {
   const contentRef = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
 
-  const logoSrc = theme === "light" ? "/assets/Asset 2 1.png" : "/assets/Asset 5@3x 1.png";
+  const logoSrc =
+    theme === "light" ? "/assets/Asset 2 1.png" : "/assets/Asset 5@3x 1.png";
+
+  const waveColor: [number, number, number] =
+    theme === "dark" ? [0.03, 0.08, 0.15] : [0.7, 0.7, 0.7];
 
   useGSAP(
     () => {
@@ -45,9 +50,20 @@ export default function Hero({}: Props) {
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden py-28 md:py-36 px-6 pt-16"
     >
-      {/* Background SVG Art */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-       
+      {/* Background Dither Animation */}
+      <div className="absolute inset-0 z-0 opacity-100">
+        <Dither
+          waveColor={waveColor}
+          disableAnimation={true}
+          enableMouseInteraction={false}
+          mouseRadius={0.3}
+          colorNum={3}
+          pixelSize={2}
+          waveAmplitude={0.4}
+          waveFrequency={3}
+          // colorIntensity={4}
+          waveSpeed={0.05}
+        />
       </div>
 
       {/* Foreground Content */}
@@ -77,8 +93,6 @@ export default function Hero({}: Props) {
             Deifying Linearity
           </h2>
         </FadeUp>
-
-
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Syne, DM_Sans, IBM_Plex_Mono } from "next/font/google";
-import "../styles/globals.css";
+import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -26,7 +26,8 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: "Antilinear Technologies — AI & Technology Agency",
-  description: "From generative AI to full-cycle web products — we engineer the future of digital.",
+  description:
+    "From generative AI to full-cycle web products — we engineer the future of digital.",
 };
 
 export default function RootLayout({
@@ -35,7 +36,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${syne.variable} ${dmSans.variable} ${ibmPlexMono.variable}`}>
+    <html
+      lang="en"
+      className={`${syne.variable} ${dmSans.variable} ${ibmPlexMono.variable}`}
+    >
       <body className="bg-[var(--bg)] text-[var(--text-primary)] font-body transition-colors duration-300">
         <ThemeProvider>
           <SmoothScroll>
