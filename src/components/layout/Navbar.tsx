@@ -9,11 +9,34 @@ import { useTheme } from "@/context/ThemeContext";
 
 interface Props {}
 
+const NavDrawOutlineLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+  return (
+    <Link
+      href={href}
+      className="group relative px-4 py-1 text-text-secondary hover:text-text-primary transition-colors duration-[400ms] font-medium text-sm"
+    >
+      <span className="relative z-10">{children}</span>
+
+      {/* TOP */}
+      <span className="absolute left-0 top-0 h-[2px] w-0 bg-text-primary transition-all duration-100 group-hover:w-full" />
+
+      {/* RIGHT */}
+      <span className="absolute right-0 top-0 h-0 w-[1.5px] bg-text-primary transition-all delay-100 duration-100 group-hover:h-full" />
+
+      {/* BOTTOM */}
+      <span className="absolute bottom-0 right-0 h-[2px] w-0 bg-text-primary transition-all delay-200 duration-100 group-hover:w-full" />
+
+      {/* LEFT */}
+      <span className="absolute bottom-0 left-0 h-0 w-[1.5px] bg-text-primary transition-all delay-300 duration-100 group-hover:h-full" />
+    </Link>
+  );
+};
+
 export default function Navbar({}: Props) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme } = useTheme();
 
-  const logoSrc = theme === "light" ? "/assets/Asset 2 1.png" : "/assets/Asset 5@3x 1.png";
+  const logoSrc = theme === "light" ? "/assets/Vertical - Black 1.svg" : "/assets/Logo light theme.svg";
 
   return (
     <header className="sticky top-0 left-0 w-full z-50 backdrop-blur-xl bg-bg/80 border-b border-border transition-colors duration-300">
@@ -24,19 +47,9 @@ export default function Navbar({}: Props) {
         </Link>
 
         {/* Center: Nav Links (Desktop) */}
-        <nav className="hidden md:flex items-center gap-8 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-max z-10">
-          <Link
-            href="/services"
-            className="text-text-secondary hover:text-text-primary transition-colors font-medium text-sm"
-          >
-            Services
-          </Link>
-          <Link
-            href="/about"
-            className="text-text-secondary hover:text-text-primary transition-colors font-medium text-sm"
-          >
-            About
-          </Link>
+        <nav className="hidden md:flex items-center gap-4 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-max z-10">
+          <NavDrawOutlineLink href="/services">Services</NavDrawOutlineLink>
+          <NavDrawOutlineLink href="/about">About</NavDrawOutlineLink>
         </nav>
 
         {/* Right: Theme Toggle + CTA */}
