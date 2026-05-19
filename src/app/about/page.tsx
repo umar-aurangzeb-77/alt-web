@@ -11,7 +11,7 @@ export default function AboutPage({}: Props) {
       <section className="py-28 md:py-36 px-6">
         <div className="max-w-7xl mx-auto text-center">
           <FadeUp>
-            <h1 className="font-display text-6xl md:text-7xl font-bold text-[var(--text-primary)] mb-6">
+            <h1 className="font-display text-5xl md:text-6xl font-bold text-[var(--text-primary)] mb-6 leading-normal pb-2">
               About Us
             </h1>
           </FadeUp>
@@ -177,7 +177,7 @@ export default function AboutPage({}: Props) {
       <section className="py-28 md:py-36 px-6">
         <FadeUp>
           <div className="max-w-5xl mx-auto text-center bg-accent/5 border border-dashed border-accent/20  p-12">
-            <h2 className="font-display font-bold text-4xl text-[var(--text-primary)] mb-3">
+            <h2 className="font-mono font-normal text-2xl md:text-3xl text-[var(--text-primary)] mb-3 leading-relaxed pb-2">
               Ready to build something great?
             </h2>
             <p className="text-[var(--text-muted)] mb-8 max-w-lg mx-auto leading-[1.75]">

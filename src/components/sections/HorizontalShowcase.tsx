@@ -99,7 +99,7 @@ function ProjectCard({
         <div className="skew-x-5">
           {" "}
           {/* Un-skew text for readability */}
-          <h3 className="text-3xl md:text-5xl lg:text-6xl font-display text-white mb-4 leading-tight">
+          <h3 className="text-2xl md:text-4xl lg:text-5xl font-display text-white mb-4 leading-normal pb-2">
             {project.title}
           </h3>
           <p className="text-sm md:text-base text-white/40 font-mono tracking-widest uppercase">

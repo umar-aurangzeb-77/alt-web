@@ -74,9 +74,9 @@ export default function DefyLinearity({}: Props) {
         <div className="text-center mb-12">
           <h2
             ref={headingRef}
-            className="text-4xl md:text-6xl text-text-primary"
+            className="text-2xl md:text-4xl font-mono font-normal text-text-primary leading-relaxed pb-4 overflow-visible block"
           >
-            Defyiing  Linearity
+            Defying Linearity
           </h2>
           <p className="text-text-secondary mt-8 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed">
             We move faster, think deeper, and ship smarter

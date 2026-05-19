@@ -83,7 +83,7 @@ export default function Hero({}: Props) {
 
         {/* Subheading */}
         <FadeUp delay={0.6}>
-          <h2 className="text-[16px] md:text-[20px] font-mono font-normal text-text-secondary leading-none tracking-[0.2em]">
+          <h2 className="text-[16px] md:text-[20px] font-mono font-normal text-text-secondary leading-snug tracking-[0.2em]">
             Deifying Linearity
           </h2>
         </FadeUp>

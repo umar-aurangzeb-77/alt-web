@@ -72,11 +72,11 @@ export default function TechCompatibility() {
   return (
     <section className="py-28 md:py-36 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="font-display font-bold text-4xl md:text-5xl text-[var(--text-primary)]">
+        <h2 className="font-display font-bold text-3xl md:text-4xl text-[var(--text-primary)] leading-relaxed pb-2">
           Seamless Technical Compatibility
         </h2>
         <p className="text-[var(--text-muted)] mt-5 max-w-xl mx-auto text-lg leading-[1.75]">
-          We integrate with your existing stack — whatever it looks like.
+          No matter your setup, we integrate seamlessly with your existing stack.
         </p>
 
         <div className="mt-16 h-[500px] border-t border-b border-[var(--border)] overflow-hidden">
@@ -93,7 +93,7 @@ export default function TechCompatibility() {
 
         {/* CTA Band */}
         <div className="mt-24 p-12 bg-accent/5 border-t border-b border-dashed border-accent/20">
-          <h3 className="text-3xl font-display font-bold text-[var(--text-primary)] mb-3">
+          <h3 className="text-2xl md:text-3xl font-mono font-normal text-[var(--text-primary)] mb-3 leading-relaxed pb-2">
             Ready to build something great?
           </h3>
           <p className="text-[var(--text-muted)] mb-8 max-w-lg mx-auto">
