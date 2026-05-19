@@ -8,7 +8,7 @@ interface Props {
 
 export default function ServiceCard({ icon, title, body }: Props) {
   return (
-    <div className="relative group flex flex-col justify-between p-8 min-h-[280px] rounded-[2rem] overflow-hidden bg-surface border border-border hover:border-accent/30 hover:bg-surface-2 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]">
+    <div className="relative group flex flex-col justify-between p-8 min-h-[280px] rounded-[2rem] overflow-hidden bg-surface border border-border hover:border-accent hover:bg-surface-2 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]">
       {/* Top section */}
       <div className="relative z-10">
         {/* Icon wrapper */}

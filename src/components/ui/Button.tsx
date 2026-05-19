@@ -10,13 +10,17 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "primary", size = "default", href, ...props }, ref) => {
+  (
+    { className, variant = "primary", size = "default", href, ...props },
+    ref,
+  ) => {
     const baseStyles =
-      "inline-flex items-center justify-center rounded-full transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none cursor-pointer font-mono uppercase tracking-widest font-medium";
+      "inline-flex items-center justify-center rounded-full transition-all duration-500 disabled:opacity-50 disabled:pointer-events-none cursor-pointer font-mono uppercase tracking-widest font-medium";
 
     const variants = {
       primary: "bg-[#003459] text-[#f1f0ea] hover:opacity-90",
-      outline: "border border-[var(--text-primary)] text-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg)]",
+      outline:
+        "border border-[var(--text-primary)] text-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg)]",
       secondary: "bg-white text-gray-800 hover:bg-gray-900 hover:text-white",
       ghost: "text-text-primary hover:bg-surface-2",
     };
@@ -33,7 +37,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       variants[variant],
       sizes[size],
       "w-full md:w-auto",
-      className
+      className,
     );
 
     if (href) {
@@ -49,7 +53,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {props.children}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

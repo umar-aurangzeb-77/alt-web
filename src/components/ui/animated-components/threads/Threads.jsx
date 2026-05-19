@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
-import { Renderer, Program, Mesh, Triangle, Color } from 'ogl';
-import './Threads.css';
+import { useEffect, useRef } from "react";
+import { Renderer, Program, Mesh, Triangle, Color } from "ogl";
+import "./Threads.css";
 
 const vertexShader = `
 attribute vec2 position;
@@ -25,7 +25,7 @@ varying vec2 vUv;
 
 #define PI 3.1415926538
 
-const int u_line_count = 40;
+const int u_line_count = 15;
 const float u_line_width = 7.0;
 const float u_line_blur = 10.0;
 
@@ -120,7 +120,13 @@ void main() {
 }
 `;
 
-const Threads = ({ color = [1, 1, 1], amplitude = 1, distance = 0, enableMouseInteraction = false, ...rest }) => {
+const Threads = ({
+  color = [1, 1, 1],
+  amplitude = 1,
+  distance = 0,
+  enableMouseInteraction = false,
+  ...rest
+}) => {
   const containerRef = useRef(null);
   const animationFrameId = useRef();
 
@@ -128,7 +134,9 @@ const Threads = ({ color = [1, 1, 1], amplitude = 1, distance = 0, enableMouseIn
     if (!containerRef.current) return;
     const container = containerRef.current;
 
-    const renderer = new Renderer({ alpha: true });
+    // Optimize 1: Enforce logical pixel resolution bounds (dpr: 1)
+    // This decreases pixel fill count by 4x on Retina/high-DPI devices
+    const renderer = new Renderer({ alpha: true, dpr: 1 });
     const gl = renderer.gl;
     gl.clearColor(0, 0, 0, 0);
     gl.enable(gl.BLEND);
@@ -142,16 +150,22 @@ const Threads = ({ color = [1, 1, 1], amplitude = 1, distance = 0, enableMouseIn
       uniforms: {
         iTime: { value: 0 },
         iResolution: {
-          value: new Color(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height)
+          value: new Color(
+            gl.canvas.width,
+            gl.canvas.height,
+            gl.canvas.width / gl.canvas.height,
+          ),
         },
         uColor: { value: new Color(...color) },
         uAmplitude: { value: amplitude },
         uDistance: { value: distance },
-        uMouse: { value: new Float32Array([0.5, 0.5]) }
-      }
+        uMouse: { value: new Float32Array([0.5, 0.5]) },
+      },
     });
 
     const mesh = new Mesh(gl, { geometry, program });
+
+    let isDrawing = true;
 
     function resize() {
       const { clientWidth, clientHeight } = container;
@@ -159,8 +173,9 @@ const Threads = ({ color = [1, 1, 1], amplitude = 1, distance = 0, enableMouseIn
       program.uniforms.iResolution.value.r = clientWidth;
       program.uniforms.iResolution.value.g = clientHeight;
       program.uniforms.iResolution.value.b = clientWidth / clientHeight;
+      isDrawing = true;
     }
-    window.addEventListener('resize', resize);
+    window.addEventListener("resize", resize);
     resize();
 
     let currentMouse = [0.5, 0.5];
@@ -171,43 +186,70 @@ const Threads = ({ color = [1, 1, 1], amplitude = 1, distance = 0, enableMouseIn
       const x = (e.clientX - rect.left) / rect.width;
       const y = 1.0 - (e.clientY - rect.top) / rect.height;
       targetMouse = [x, y];
+      isDrawing = true;
     }
     function handleMouseLeave() {
       targetMouse = [0.5, 0.5];
+      isDrawing = true;
     }
     if (enableMouseInteraction) {
-      container.addEventListener('mousemove', handleMouseMove);
-      container.addEventListener('mouseleave', handleMouseLeave);
+      container.addEventListener("mousemove", handleMouseMove);
+      container.addEventListener("mouseleave", handleMouseLeave);
     }
 
+    let targetScrollY = 0;
+    let currentScrollY = 0;
+
+    function handleScroll() {
+      targetScrollY = window.scrollY;
+      isDrawing = true;
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     function update(t) {
+      const mouseDiff = enableMouseInteraction 
+        ? Math.abs(targetMouse[0] - currentMouse[0]) + Math.abs(targetMouse[1] - currentMouse[1])
+        : 0;
+      const scrollDiff = Math.abs(targetScrollY - currentScrollY);
+
+      // Smooth scroll lerping for weighted organic movement
+      currentScrollY += 0.05 * (targetScrollY - currentScrollY);
+      program.uniforms.iTime.value = currentScrollY * 0.003;
+
       if (enableMouseInteraction) {
         const smoothing = 0.05;
         currentMouse[0] += smoothing * (targetMouse[0] - currentMouse[0]);
         currentMouse[1] += smoothing * (targetMouse[1] - currentMouse[1]);
         program.uniforms.uMouse.value[0] = currentMouse[0];
         program.uniforms.uMouse.value[1] = currentMouse[1];
-      } else {
-        program.uniforms.uMouse.value[0] = 0.5;
-        program.uniforms.uMouse.value[1] = 0.5;
       }
-      program.uniforms.iTime.value = t * 0.001;
 
-      renderer.render({ scene: mesh });
+      // Optimize 2: Sleep rendering cycles if layout is fully static
+      if (scrollDiff > 0.0001 || mouseDiff > 0.0001 || isDrawing) {
+        renderer.render({ scene: mesh });
+        
+        // Enter sleeping state if everything has smoothly decelerated
+        if (scrollDiff <= 0.0001 && mouseDiff <= 0.0001) {
+          isDrawing = false;
+        }
+      }
+
       animationFrameId.current = requestAnimationFrame(update);
     }
     animationFrameId.current = requestAnimationFrame(update);
 
     return () => {
-      if (animationFrameId.current) cancelAnimationFrame(animationFrameId.current);
-      window.removeEventListener('resize', resize);
+      if (animationFrameId.current)
+        cancelAnimationFrame(animationFrameId.current);
+      window.removeEventListener("resize", resize);
+      window.removeEventListener("scroll", handleScroll);
 
       if (enableMouseInteraction) {
-        container.removeEventListener('mousemove', handleMouseMove);
-        container.removeEventListener('mouseleave', handleMouseLeave);
+        container.removeEventListener("mousemove", handleMouseMove);
+        container.removeEventListener("mouseleave", handleMouseLeave);
       }
       if (container.contains(gl.canvas)) container.removeChild(gl.canvas);
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
+      gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
   }, [color, amplitude, distance, enableMouseInteraction]);
 

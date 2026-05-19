@@ -38,14 +38,15 @@ export default function SmoothScroll({ children }: Props) {
       root
       autoRaf={false}
       options={{
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        duration: 1.6,
+        easing: (t) => 1 - Math.pow(1 - t, 5), // Premium easeOutQuint deceleration drift
         orientation: "vertical",
         gestureOrientation: "vertical",
         smoothWheel: true,
+        wheelMultiplier: 0.9, // Adds deliberate, tactile weight to mouse notches
         // syncTouch: false prevents mousepad (trackpad) issues on Windows/Chrome
         syncTouch: false,
-        touchMultiplier: 2,
+        touchMultiplier: 1.5,
       }}
     >
       <LenisGSAPSync />

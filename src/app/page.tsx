@@ -8,11 +8,10 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <HorizontalShowcase />
+      {/* <HorizontalShowcase /> */}
       <DefyLinearity />
       <Services />
       <TechCompatibility />
     </>
   );
 }
-

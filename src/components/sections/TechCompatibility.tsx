@@ -1,22 +1,72 @@
 "use client";
 
 import Link from "next/link";
-import Marquee from "@/components/ui/Marquee";
+import FlowingMenu from "@/components/ui/animated-components/flowing-menu/FlowingMenu";
 
 export default function TechCompatibility() {
-  const techs = [
-    "Next.js",
-    "React",
-    "Python",
-    "TensorFlow",
-    "PyTorch",
-    "AWS",
-    "Docker",
-    "PostgreSQL",
-    "OpenAI",
-    "GSAP",
-    "Lenis",
-    "TypeScript",
+  const demoItems = [
+    {
+      link: "#",
+      text: "Frontend & UI",
+      subItems: [
+        {
+          text: "Next.js",
+          image: "/flow-menu/frontend%20%26%20UI/nextjs.jpg",
+        },
+        {
+          text: "Figma",
+          image: "/flow-menu/frontend%20%26%20UI/Figma-Logo.png",
+        },
+        {
+          text: "Lenis",
+          image: "/flow-menu/frontend%20%26%20UI/lenis_logo.gif",
+        },
+      ],
+    },
+    {
+      link: "#",
+      text: "Backend & Database",
+      subItems: [
+        {
+          text: "NestJS",
+          image: "/flow-menu/Backend%20%26%20Database/NestJS-logo.svg",
+        },
+        {
+          text: "Django",
+          image: "/flow-menu/Backend%20%26%20Database/django-logo.png",
+        },
+        {
+          text: "PostgreSQL",
+          image: "/flow-menu/Backend%20%26%20Database/postgres-logo.png",
+        },
+        {
+          text: "Redis",
+          image: "/flow-menu/Backend%20%26%20Database/redis-logo.png",
+        },
+        {
+          text: "Rust",
+          image: "/flow-menu/Backend%20%26%20Database/rust-logo.webp",
+        },
+      ],
+    },
+    {
+      link: "#",
+      text: "Cloud & DevOps",
+      subItems: [
+        {
+          text: "Apache",
+          image: "/flow-menu/Cloud%20%26%20DevOps/Apache-logo.svg",
+        },
+        {
+          text: "Docker",
+          image: "/flow-menu/Cloud%20%26%20DevOps/Docker_Logo.svg.png",
+        },
+        {
+          text: "Jenkins",
+          image: "/flow-menu/Cloud%20%26%20DevOps/Jenkins_logo.svg",
+        },
+      ],
+    },
   ];
 
   return (
@@ -29,41 +79,30 @@ export default function TechCompatibility() {
           We integrate with your existing stack — whatever it looks like.
         </p>
 
-        <div className="mt-16">
-          <Marquee speed={1.2} className="py-4">
-            {techs.map((tech) => (
-              <div
-                key={tech}
-                className="whitespace-nowrap bg-[var(--surface)] border border-[var(--border)] rounded-full px-8 py-4 text-lg text-[var(--text-muted)] hover:border-accent/40 hover:text-[var(--text-primary)] transition-all duration-300 cursor-default"
-              >
-                {tech}
-              </div>
-            ))}
-          </Marquee>
-          
-          <Marquee speed={0.8} direction={-1} className="py-4 mt-4">
-            {techs.reverse().map((tech) => (
-              <div
-                key={`${tech}-rev`}
-                className="whitespace-nowrap bg-[var(--surface)] border border-[var(--border)] rounded-full px-8 py-4 text-lg text-[var(--text-muted)] hover:border-accent/40 hover:text-[var(--text-primary)] transition-all duration-300 cursor-default"
-              >
-                {tech}
-              </div>
-            ))}
-          </Marquee>
+        <div className="mt-16 h-[500px] border-t border-b border-[var(--border)] overflow-hidden">
+          <FlowingMenu
+            items={demoItems}
+            bgColor="var(--surface)"
+            textColor="var(--text-primary)"
+            marqueeBgColor="var(--accent)"
+            marqueeTextColor="var(--bg)"
+            borderColor="var(--border)"
+            speed={12}
+          />
         </div>
 
         {/* CTA Band */}
-        <div className="mt-24 p-12 bg-accent/5 border border-dashed border-accent/20 rounded-3xl">
+        <div className="mt-24 p-12 bg-accent/5 border-t border-b border-dashed border-accent/20">
           <h3 className="text-3xl font-display font-bold text-[var(--text-primary)] mb-3">
             Ready to build something great?
           </h3>
           <p className="text-[var(--text-muted)] mb-8 max-w-lg mx-auto">
-            Let's discuss how our technical intelligence can accelerate your next big project.
+            Let's discuss how our technical intelligence can accelerate your
+            next big project.
           </p>
           <Link
             href="/contact"
-            className="inline-block bg-accent text-white px-8 py-3.5 text-sm rounded-full font-medium hover:opacity-90 transition-opacity mx-auto"
+            className="inline-block bg-surface text-white hover:text-surface hover:bg-accent transition-all duration-300  px-8 py-3.5 text-sm rounded-full font-medium hover:opacity-90 mx-auto"
           >
             Start a Project
           </Link>
@@ -72,4 +111,3 @@ export default function TechCompatibility() {
     </section>
   );
 }
-

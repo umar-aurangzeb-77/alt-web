@@ -9,9 +9,14 @@ export default function ContactPlaceholder() {
           We&apos;re currently accepting new projects for Q3 2025.
         </p>
         <div className="bg-[var(--surface)] border border-dashed border-[var(--border)] rounded-2xl p-10 animate-fade-up delay-300">
-          <p className="text-[var(--text-muted)] mb-4">Reach out directly at:</p>
-          <a href="mailto:hello@studio.ai" className="text-2xl font-bold text-accent hover:underline">
-            hello@studio.ai
+          <p className="text-[var(--text-muted)] mb-4">
+            Reach out directly at:
+          </p>
+          <a
+            href="mailto:support@antilineartech.com"
+            className="text-2xl font-bold text-accent hover:underline"
+          >
+            support@antilineartech.com
           </a>
         </div>
       </div>

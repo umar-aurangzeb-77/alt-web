@@ -7,7 +7,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import Threads from "@/components/ui/animations/threads/Threads";
+import Threads from "@/components/ui/animated-components/threads/Threads";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,7 +19,9 @@ export default function Hero({}: Props) {
   const { theme } = useTheme();
 
   const logoSrc =
-    theme === "light" ? "/assets/Vertical - Black 1.svg" : "/assets/Logo light theme.svg";
+    theme === "light"
+      ? "/assets/Vertical - Black 1.svg"
+      : "/assets/Logo light theme.svg";
 
   const threadColor: [number, number, number] =
     theme === "dark" ? [1, 1, 1] : [0, 0.204, 0.349]; // White for dark, #003459 for light
@@ -49,14 +51,14 @@ export default function Hero({}: Props) {
       className="relative min-h-screen flex items-center justify-center overflow-hidden py-28 md:py-36 px-6 pt-16 bg-bg transition-colors duration-300"
     >
       {/* Animation Background Layer */}
-      <div className="absolute inset-0 z-1 w-full h-full">
+      {/* <div className="absolute inset-0 z-1 w-full h-full">
         <Threads
           color={threadColor}
           amplitude={1.2}
           distance={0.2}
-          enableMouseInteraction={true}
+          enableMouseInteraction={false}
         />
-      </div>
+      </div> */}
 
       {/* Content Foreground Layer */}
       <div

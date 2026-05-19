@@ -48,13 +48,14 @@ body {
   --color-accent: var(--accent);
   --color-accent-secondary: var(--accent-secondary);
   --color-accent-glow: var(--accent-glow);
+  --color-icon: var(--icon-color);
 }
 
 :root {
   /* Brand-Centric Palette */
   --bg: #001f35; /* Darker variant of brand-blue for background */
-  --surface: #003459; /* Brand-blue as primary surface */
-  --surface-2: #004271;
+  --surface: #002036; /* Brand-blue as primary surface */
+  --surface-2: #003256;
   --surface-3: #005089;
 
   --border: rgba(241, 240, 234, 0.1); /* Brand-cream with opacity */
@@ -64,9 +65,10 @@ body {
   --text-secondary: rgba(241, 240, 234, 0.7);
   --text-muted: rgba(241, 240, 234, 0.5);
 
-  --accent: #00a8e8; /* More vibrant light blue for contrast */
+  --accent: #daf4ff; /* More vibrant light blue for contrast */
   --accent-secondary: #f1f0ea;
   --accent-glow: rgba(0, 168, 232, 0.15);
+  --icon-color: var(--accent-secondary);
 }
 
 html.light {
@@ -83,6 +85,7 @@ html.light {
   --text-muted: #64748b;
 
   --accent: #003459;
+  --icon-color: var(--accent);
 }
 
 * {
@@ -222,4 +225,3 @@ body {
   position: relative;
   overflow-x: hidden;
 }
-

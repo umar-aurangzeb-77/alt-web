@@ -1,6 +1,6 @@
 "use client";
 
-import FeatureCard from "@/components/ui/FeatureCard";
+import ReflectiveCard from "@/components/ui/animated-components/reflective-cards/ReflectiveCard";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -17,85 +17,32 @@ export default function DefyLinearity({}: Props) {
 
   const features = [
     {
-      title: "Precision Execution",
+      title: "NearVendor",
       body: "Every deliverable is engineered to spec, on time, without compromise.",
-      className: "border-b border-r border-dashed border-[var(--border)]",
-      icon: (
-        <svg
-          className="w-10 h-10"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={1.5}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      ),
+      logo: "/project-logos/near-vendor-logo.svg",
     },
     {
-      title: "Instant Technical Intelligence",
+      title: "Doneto",
       body: "AI-assisted workflows that cut research and iteration cycles in half.",
-      className: "border-b border-dashed border-[var(--border)]",
-      icon: (
+      logo: (
         <svg
-          className="w-10 h-10"
+          className="w-20 h-20 stroke-[var(--icon-color)]"
           fill="none"
           viewBox="0 0 24 24"
-          stroke="currentColor"
           strokeWidth={1.5}
         >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            d="M13 10V3L4 14h7v7l9-11h-7z"
+            d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.746 3.746 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"
           />
         </svg>
       ),
     },
     {
-      title: "Unified Collaboration",
+      title: "MITS",
       body: "One team across design, engineering, and strategy — zero silos.",
-      className:
-        "border-r border-dashed border-[var(--border)] md:border-b-0 border-b",
-      icon: (
-        <svg
-          className="w-10 h-10"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={1.5}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-          />
-        </svg>
-      ),
-    },
-    {
-      title: "Hardened Security",
-      body: "Enterprise-grade infrastructure and data practices from day one.",
-      className: "",
-      icon: (
-        <svg
-          className="w-10 h-10"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={1.5}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-          />
-        </svg>
-      ),
+      logo: "/project-logos/mits-logo.svg",
     },
   ];
 
@@ -135,7 +82,7 @@ export default function DefyLinearity({}: Props) {
   );
 
   return (
-    <section className="py-32 md:py-48 px-6">
+    <section className="py-32 md:py-48 px-6 bg-bg/50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h2
@@ -152,7 +99,7 @@ export default function DefyLinearity({}: Props) {
 
         <div
           ref={containerRef}
-          className="grid grid-cols-1 md:grid-cols-2 border border-border rounded-[2.5rem] overflow-hidden mt-20"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 justify-items-center"
         >
           {features.map((feature, index) => (
             <div
@@ -160,8 +107,24 @@ export default function DefyLinearity({}: Props) {
               ref={(el) => {
                 cardsRef.current[index] = el;
               }}
+              className="w-full flex justify-center"
             >
-              <FeatureCard {...feature} />
+              <ReflectiveCard
+                overlayColor="rgba(0, 32, 54, 0.4)"
+                blurStrength={8}
+                glassDistortion={10}
+                metalness={0.6}
+                roughness={0.3}
+                displacementStrength={15}
+                noiseScale={1.2}
+                specularConstant={1.8}
+                grayscale={0.7}
+                color="#f1f0ea"
+                userName={feature.title}
+                userRole={feature.body}
+                idNumber={`ALT-00${index + 1}`}
+                logo={feature.logo}
+              />
             </div>
           ))}
         </div>

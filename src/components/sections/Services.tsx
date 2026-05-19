@@ -16,57 +16,51 @@ export default function Services({}: Props) {
 
   const services = [
     {
-      title: "Computer Vision",
-      body: "Real-time object detection, image classification, and visual AI pipelines.",
+      title: "Financial Platforms",
+      body: "Architecting secure, high-availability ledger engines, transaction processing systems, and transparent crowdfunding infrastructure optimized for complex regional and global financial ecosystems.",
       icon: (
-        <svg className="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <svg className="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="var(--icon-color)" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818.879-.659c1.546-1.16 3.696-1.16 5.242 0 .584.438.584 1.2.001 1.64c-1.546 1.16-3.696 1.16-5.242 0L9 15.682zm0-7.364.879-.66c1.546-1.16 3.696-1.16 5.242 0 .584.438.584 1.2.001 1.64c-1.546 1.16-3.696 1.16-5.242 0L9 8.318z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 22h6M9 2h6" />
+        </svg>
+      ),
+    },
+    {
+      title: "Next-Gen E-Commerce",
+      body: "Building hyper-local product discovery mapping, high-conversion web/mobile marketplaces, and unified Point of Sale (POS) integrations that seamlessly bridge digital search with physical retail.",
+      icon: (
+        <svg className="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="var(--icon-color)" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Regulatory & Compliance",
+      body: "Transforming complex workflows into intuitive, multi-tiered digital portals featuring secure document management, automated compliance auditing, and role-based access control.",
+      icon: (
+        <svg className="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="var(--icon-color)" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v5.586a1 1 0 001 1H18" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 9h.01" />
+        </svg>
+      ),
+    },
+    {
+      title: "Security & Intelligence",
+      body: "Engineering advanced, data-driven security architectures, multi-layered identity tracking, and live geospatial mapping solutions tailored for modern sectors and corporate asset protection.",
+      icon: (
+        <svg className="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="var(--icon-color)" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
         </svg>
       ),
     },
     {
-      title: "Generative AI",
-      body: "Custom LLM integrations, RAG systems, and AI-powered product features.",
+      title: "Operational Automation",
+      body: "Eliminating manual operational bottlenecks with bespoke management dashboards, real-time reporting tools, and robust backend data pipelines built for continuous improvement.",
       icon: (
-        <svg className="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-7.714 2.143L11 21l-2.286-6.857L1 12l7.714-2.143L11 3z" />
-        </svg>
-      ),
-    },
-    {
-      title: "Custom Web Development",
-      body: "Performant, accessible Next.js apps built to scale from day one.",
-      icon: (
-        <svg className="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-        </svg>
-      ),
-    },
-    {
-      title: "Mobile Applications",
-      body: "Cross-platform React Native apps with native performance and feel.",
-      icon: (
-        <svg className="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-        </svg>
-      ),
-    },
-    {
-      title: "Predictive Data Analytics",
-      body: "ML models and dashboards that turn raw data into business decisions.",
-      icon: (
-        <svg className="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-      ),
-    },
-    {
-      title: "Full-Cycle AI Products",
-      body: "End-to-end AI product development — from architecture to deployment.",
-      icon: (
-        <svg className="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+        <svg className="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="var(--icon-color)" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
         </svg>
       ),
     },

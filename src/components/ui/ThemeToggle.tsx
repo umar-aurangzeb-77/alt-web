@@ -11,13 +11,14 @@ export default function ThemeToggle({}: Props) {
   return (
     <button
       onClick={toggle}
-      className="p-2 rounded-full hover:bg-white/5 text-text-primary transition-colors duration-300 active:scale-90 flex items-center justify-center"
+      className="p-2 rounded-full hover:bg-text-primary hover:text-bg text-text-primary  transition-colors duration-500 active:scale-90 flex items-center justify-center"
       aria-label="Toggle Theme"
     >
-      <SunMoon 
-        size={20} 
-        animateOnClick 
+      <SunMoon
+        size={20}
+        animateOnClick
         animate={theme} // Triggers animation on theme change
+        // className=""
       />
     </button>
   );
