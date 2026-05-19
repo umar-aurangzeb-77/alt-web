@@ -69,9 +69,9 @@ export default function DefyLinearity({}: Props) {
   );
 
   return (
-    <section className="py-32 md:py-48 px-6 bg-bg/50">
+    <section className="pt-16 pb-32 md:pt-24 md:pb-48 px-6 bg-bg/50">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20">
+        <div className="text-center mb-12">
           <h2
             ref={headingRef}
             className="text-4xl md:text-6xl text-text-primary"
@@ -79,8 +79,7 @@ export default function DefyLinearity({}: Props) {
             Defyiing  Linearity
           </h2>
           <p className="text-text-secondary mt-8 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed">
-            We move faster, think deeper, and ship smarter — without the
-            overhead.
+            We move faster, think deeper, and ship smarter
           </p>
         </div>
 
