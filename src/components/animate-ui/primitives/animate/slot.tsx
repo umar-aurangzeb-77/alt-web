@@ -68,7 +68,8 @@ function Slot<T extends HTMLElement = HTMLElement>({
     children.type !== null &&
     isMotionComponent(children.type);
 
-  const Base = React.useMemo(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const Base: any = React.useMemo(
     () =>
       isAlreadyMotion
         ? (children.type as React.ElementType)
