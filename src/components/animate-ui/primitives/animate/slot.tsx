@@ -22,7 +22,7 @@ type SlotProps<T extends HTMLElement = HTMLElement> = {
 
 function mergeRefs<T>(
   ...refs: (React.Ref<T> | undefined)[]
-): React.RefCallback<T> {
+): (node: T | null) => void {
   return (node) => {
     refs.forEach((ref) => {
       if (!ref) return;
@@ -68,8 +68,7 @@ function Slot<T extends HTMLElement = HTMLElement>({
     children.type !== null &&
     isMotionComponent(children.type);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const Base: any = React.useMemo(
+  const Base = React.useMemo(
     () =>
       isAlreadyMotion
         ? (children.type as React.ElementType)
@@ -83,9 +82,12 @@ function Slot<T extends HTMLElement = HTMLElement>({
 
   const mergedProps = mergeProps(childProps, props);
 
-  return (
-    <Base {...mergedProps} ref={mergeRefs(childRef as React.Ref<T>, ref)} />
-  );
+  const mergedRef = mergeRefs(childRef as React.Ref<T>, ref);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const AnyBase = Base as React.ComponentType<any>;
+
+  return <AnyBase {...mergedProps} ref={mergedRef} />;
 }
 
 export {
