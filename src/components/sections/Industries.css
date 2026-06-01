@@ -7,6 +7,7 @@
   --ind-text-secondary: #004271;       /* slightly lighter brand-blue */
   --ind-svg-fill: #f1f0ea;             /* fill matches card bg to blend */
   --ind-svg-stroke: #003459;           /* brand-blue stroke */
+  --ind-svg-grad-end: #0088cc;         /* brand-blue gradient end */
   --ind-svg-glow: rgba(0, 52, 89, 0.08);
   --ind-svg-glow-hover: rgba(0, 52, 89, 0.18);
 }
@@ -20,6 +21,7 @@ html.light .industries-section {
   --ind-text-secondary: #cbd5e1;       /* light slate */
   --ind-svg-fill: #001f35;             /* fill matches card bg */
   --ind-svg-stroke: #f1f0ea;           /* brand-cream stroke */
+  --ind-svg-grad-end: #38bdf8;         /* light sky-blue gradient end */
   --ind-svg-glow: rgba(255, 255, 255, 0.12);
   --ind-svg-glow-hover: rgba(255, 255, 255, 0.28);
 }
@@ -119,7 +121,7 @@ html.light .industries-section {
   height: 45%;
   width: 100%;
   background-color: var(--ind-card-bg);
-  padding: 1.5rem 1.25rem;
+  padding: 1.25rem 1.25rem; /* reduced vertical padding to prevent text cutoff */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -155,7 +157,7 @@ html.light .industries-section {
 .industry-desc {
   font-size: 0.75rem;
   font-family: var(--font-body);
-  line-height: 1.5;
+  line-height: 1.4; /* optimized from 1.5 to maximize readable lines and eliminate cutoff */
   color: var(--ind-text-secondary);
   max-width: 95%;
   margin: 0 auto;

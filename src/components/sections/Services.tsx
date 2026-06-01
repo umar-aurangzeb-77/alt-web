@@ -111,10 +111,8 @@ export default function Services({ }: Props) {
 
   useGSAP(
     () => {
-      // Rule 3: Always check prefers-reduced-motion
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-      // Rule 9: Staggered List Entrance
       gsap.from(cardsRef.current, {
         scrollTrigger: {
           trigger: containerRef.current,
@@ -144,7 +142,10 @@ export default function Services({ }: Props) {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-14"
         >
           {services.map((service, idx) => (
-            <div key={idx} ref={(el) => { cardsRef.current[idx] = el; }}>
+            <div
+              key={idx}
+              ref={(el) => { cardsRef.current[idx] = el; }}
+            >
               <ServiceCard {...service} />
             </div>
           ))}
@@ -153,4 +154,3 @@ export default function Services({ }: Props) {
     </section>
   );
 }
-

@@ -10,9 +10,9 @@ import RotateAmplitude from "@/components/animations/RotateAmplitude";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface Props { }
+interface Props {}
 
-export default function DefyLinearity({ }: Props) {
+export default function DefyLinearity({}: Props) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
@@ -102,7 +102,7 @@ export default function DefyLinearity({ }: Props) {
             >
               <RotateAmplitude amplitude={8}>
                 <ReflectiveCard
-                  overlayColor={isDark ? "rgba(255, 255, 255, 0.4)" : "rgba(0, 32, 54, 0.4)"}
+                  overlayColor={isDark ? "#f1f0ea" : "rgba(0, 32, 54, 0.4)"}
                   blurStrength={8}
                   glassDistortion={10}
                   metalness={0.6}
