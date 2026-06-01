@@ -2,12 +2,13 @@
 
 import React from "react";
 import "./ReflectiveCard.css";
-import { Fingerprint, User, Activity, Lock } from "lucide-react";
+import { Fingerprint, User, Copyright } from "lucide-react";
 import Image from "next/image";
 
 interface ReflectiveCardProps {
   blurStrength?: number;
   color?: string;
+  bgColor?: string;
   metalness?: number;
   roughness?: number;
   overlayColor?: string;
@@ -28,6 +29,7 @@ interface ReflectiveCardProps {
 const ReflectiveCard: React.FC<ReflectiveCardProps> = ({
   blurStrength = 12,
   color = "white",
+  bgColor = "#001f35",
   metalness = 1,
   roughness = 0.4,
   overlayColor = "rgba(255, 255, 255, 0.1)",
@@ -53,6 +55,7 @@ const ReflectiveCard: React.FC<ReflectiveCardProps> = ({
     "--roughness": roughness,
     "--overlay-color": overlayColor,
     "--text-color": color,
+    "--card-bg": bgColor,
     "--saturation": saturation,
   } as React.CSSProperties;
 
@@ -154,12 +157,8 @@ const ReflectiveCard: React.FC<ReflectiveCardProps> = ({
           children
         ) : (
           <>
-            <div className="card-header">
-              <div className="security-badge">
-                <Lock size={14} className="security-icon" />
-                <span>SECURE ACCESS</span>
-              </div>
-              <Activity className="status-icon" size={20} />
+            <div className="card-header" style={{ justifyContent: "flex-end" }}>
+              <Copyright className="copyright-icon" size={20} />
             </div>
 
             <div className="card-body">
@@ -171,7 +170,8 @@ const ReflectiveCard: React.FC<ReflectiveCardProps> = ({
                       alt={userName || "Logo"}
                       width={96}
                       height={96}
-                      className="object-contain max-h-24 w-auto"
+                      className={`object-contain max-h-24 w-auto ${color === "#002036" && logo.includes("white") ? "invert brightness-[0.2]" : ""
+                        }`}
                     />
                   ) : (
                     logo
@@ -180,7 +180,7 @@ const ReflectiveCard: React.FC<ReflectiveCardProps> = ({
               )}
               <div className="user-info">
                 <h2 className="user-name">{userName}</h2>
-                <p className="user-role">{userRole}</p>
+                <p className="user-role font-serif normal-case tracking-normal text-sm md:text-base leading-relaxed mt-2 opacity-100">{userRole}</p>
               </div>
             </div>
 

@@ -11,9 +11,9 @@ import Threads from "@/components/ui/animated-components/threads/Threads";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface Props {}
+interface Props { }
 
-export default function Hero({}: Props) {
+export default function Hero({ }: Props) {
   const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
@@ -84,7 +84,7 @@ export default function Hero({}: Props) {
         {/* Subheading */}
         <FadeUp delay={0.6}>
           <h2 className="text-[16px] md:text-[20px] font-mono font-normal text-text-secondary leading-snug tracking-[0.2em]">
-            Deifying Linearity
+            Defying Linearity
           </h2>
         </FadeUp>
       </div>

@@ -2,9 +2,9 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import Image from "next/image";
 
-interface Props {}
+interface Props { }
 
-export default function Footer({}: Props) {
+export default function Footer({ }: Props) {
   return (
     <footer className="bg-surface border-t border-border pt-28 pb-4 md:pt-36 md:pb-8 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
@@ -21,47 +21,80 @@ export default function Footer({}: Props) {
               height={60}
             />
           </Link>
-          <p className="text-text-secondary mt-6 text-sm leading-[1.75] max-w-xs">
-            Engineering the future of digital with precision and intelligence.
+          <p className="font-serif text-text-primary mt-6 text-base leading-[1.75] max-w-xs">
+            Defying Linearity
           </p>
         </div>
 
         {/* Col 2: Links */}
         <div>
-          <h4 className="font-display font-bold text-xs uppercase tracking-[0.2em] text-text-primary mb-8">
+          <h4 className="font-mono font-bold text-xs uppercase tracking-[0.2em] text-text-primary mb-8">
             Company
           </h4>
-          <ul className="space-y-4">
-            <li>
-              <Link
-                href="/services"
-                className="text-text-secondary text-sm hover:text-accent transition-colors"
-              >
-                Services
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/about"
-                className="text-text-secondary text-sm hover:text-accent transition-colors"
-              >
-                About
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/contact"
-                className="text-text-secondary text-sm hover:text-accent transition-colors"
-              >
-                Contact
-              </Link>
-            </li>
-          </ul>
+          <div className="relative pl-5">
+            {/* Trunk Line */}
+            <div className="absolute left-[5px] top-2 bottom-[10px] w-[1px] bg-text-primary/20" />
+            
+            <ul className="space-y-4">
+              <li className="relative flex items-center">
+                {/* Branch Line */}
+                <div className="absolute -left-[15px] top-1/2 -translate-y-1/2 w-[15px] h-[1px] bg-text-primary/20" />
+                {/* Node Dot */}
+                <div className="absolute -left-[18px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-text-primary/60" />
+                
+                <Link
+                  href="/services"
+                  className="text-text-secondary text-sm hover:text-accent transition-colors pl-2"
+                >
+                  Services
+                </Link>
+              </li>
+              <li className="relative flex items-center">
+                {/* Branch Line */}
+                <div className="absolute -left-[15px] top-1/2 -translate-y-1/2 w-[15px] h-[1px] bg-text-primary/20" />
+                {/* Node Dot */}
+                <div className="absolute -left-[18px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-text-primary/60" />
+                
+                <Link
+                  href="/products"
+                  className="text-text-secondary text-sm hover:text-accent transition-colors pl-2"
+                >
+                  Products
+                </Link>
+              </li>
+              <li className="relative flex items-center">
+                {/* Branch Line */}
+                <div className="absolute -left-[15px] top-1/2 -translate-y-1/2 w-[15px] h-[1px] bg-text-primary/20" />
+                {/* Node Dot */}
+                <div className="absolute -left-[18px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-text-primary/60" />
+                
+                <Link
+                  href="/about"
+                  className="text-text-secondary text-sm hover:text-accent transition-colors pl-2"
+                >
+                  About
+                </Link>
+              </li>
+              <li className="relative flex items-center">
+                {/* Branch Line */}
+                <div className="absolute -left-[15px] top-1/2 -translate-y-1/2 w-[15px] h-[1px] bg-text-primary/20" />
+                {/* Node Dot */}
+                <div className="absolute -left-[18px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-text-primary/60" />
+                
+                <Link
+                  href="/contact"
+                  className="text-text-secondary text-sm hover:text-accent transition-colors pl-2"
+                >
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Col 3: Get in touch */}
         <div>
-          <h4 className="font-display font-bold text-xs uppercase tracking-[0.2em] text-text-primary mb-8">
+          <h4 className="font-mono font-bold text-xs uppercase tracking-[0.2em] text-text-primary mb-8">
             Get in touch
           </h4>
           <div className="mb-8">

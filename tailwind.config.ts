@@ -18,6 +18,7 @@ const config: Config = {
         display: ["var(--font-syne)"],
         body: ["var(--font-dm)"],
         mono: ["var(--font-mono)"],
+        serif: ["var(--font-serif)"],
       },
     },
   },

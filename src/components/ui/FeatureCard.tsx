@@ -21,7 +21,7 @@ export default function FeatureCard({ icon, title, body, className = "" }: Props
       </h3>
 
       {/* Body */}
-      <p className="text-text-secondary text-base leading-relaxed mt-4 max-w-[340px] mx-auto">
+      <p className="font-serif text-text-secondary text-lg leading-relaxed mt-4 max-w-[340px] mx-auto">
         {body}
       </p>
     </div>

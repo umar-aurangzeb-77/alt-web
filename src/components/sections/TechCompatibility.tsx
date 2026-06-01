@@ -72,7 +72,7 @@ export default function TechCompatibility() {
   return (
     <section className="py-28 md:py-36 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="font-display font-bold text-3xl md:text-4xl text-[var(--text-primary)] leading-relaxed pb-2">
+        <h2 className="font-mono font-bold text-3xl md:text-4xl text-[var(--text-primary)] leading-relaxed pb-2">
           Seamless Technical Compatibility
         </h2>
         <p className="text-[var(--text-muted)] mt-5 max-w-xl mx-auto text-lg leading-[1.75]">

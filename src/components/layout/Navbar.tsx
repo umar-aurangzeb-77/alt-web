@@ -7,7 +7,7 @@ import ThemeToggle from "@/components/ui/ThemeToggle";
 
 import { useTheme } from "@/context/ThemeContext";
 
-interface Props {}
+interface Props { }
 
 const NavDrawOutlineLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
   return (
@@ -32,7 +32,7 @@ const NavDrawOutlineLink = ({ href, children }: { href: string; children: React.
   );
 };
 
-export default function Navbar({}: Props) {
+export default function Navbar({ }: Props) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme } = useTheme();
 
@@ -49,6 +49,7 @@ export default function Navbar({}: Props) {
         {/* Center: Nav Links (Desktop) */}
         <nav className="hidden md:flex items-center gap-4 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-max z-10">
           <NavDrawOutlineLink href="/services">Services</NavDrawOutlineLink>
+          <NavDrawOutlineLink href="/products">Products</NavDrawOutlineLink>
           <NavDrawOutlineLink href="/about">About</NavDrawOutlineLink>
         </nav>
 
@@ -88,6 +89,13 @@ export default function Navbar({}: Props) {
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Services
+          </Link>
+          <Link
+            href="/products"
+            className="text-4xl font-display font-bold text-text-primary"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Products
           </Link>
           <Link
             href="/about"

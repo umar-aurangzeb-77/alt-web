@@ -5,10 +5,10 @@
   height: 500px;
   border-radius: 20px;
   overflow: hidden;
-  background: #001f35;
+  background: var(--card-bg, #001f35);
   box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    0 20px 50px rgba(0, 0, 0, 0.3),
+    0 0 0 1px color-mix(in srgb, var(--text-color, white) 15%, transparent) inset;
   isolation: isolate;
 }
 
@@ -28,8 +28,7 @@
   height: 100%;
   background: linear-gradient(135deg, var(--surface-2) 0%, var(--bg) 100%);
 
-  filter: saturate(var(--saturation, 0)) contrast(120%) brightness(110%) blur(var(--blur-strength, 12px))
-    url(#metallic-displacement);
+  filter: saturate(var(--saturation, 0)) contrast(120%) brightness(110%) blur(var(--blur-strength, 12px)) url(#metallic-displacement);
 
   z-index: 0;
   opacity: 0.95;
@@ -50,14 +49,12 @@
   position: absolute;
   inset: 0;
   z-index: 2;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.4) 0%,
-    rgba(255, 255, 255, 0.1) 40%,
-    rgba(255, 255, 255, 0) 50%,
-    rgba(255, 255, 255, 0.1) 60%,
-    rgba(255, 255, 255, 0.3) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0.1) 40%,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0.1) 60%,
+      rgba(255, 255, 255, 0.3) 100%);
   pointer-events: none;
   mix-blend-mode: overlay;
   opacity: var(--metalness, 1);
@@ -68,12 +65,10 @@
   inset: 0;
   border-radius: 20px;
   padding: 1px;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.8) 0%,
-    rgba(255, 255, 255, 0.2) 50%,
-    rgba(255, 255, 255, 0.6) 100%
-  );
+  background: linear-gradient(135deg,
+      color-mix(in srgb, var(--text-color, white) 60%, transparent) 0%,
+      color-mix(in srgb, var(--text-color, white) 15%, transparent) 50%,
+      color-mix(in srgb, var(--text-color, white) 40%, transparent) 100%);
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
@@ -102,7 +97,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid color-mix(in srgb, var(--text-color, white) 15%, transparent);
   padding-bottom: 16px;
 }
 
@@ -114,9 +109,9 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   padding: 4px 8px;
-  background: rgba(255, 255, 255, 0.1);
+  background: color-mix(in srgb, var(--text-color, white) 8%, transparent);
   border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid color-mix(in srgb, var(--text-color, white) 15%, transparent);
 }
 
 .status-icon {
@@ -145,7 +140,8 @@
 .user-role {
   font-size: 12px;
   letter-spacing: 0.2em;
-  opacity: 0.7;
+  opacity: 1;
+  color: inherit;
   margin: 0;
   text-transform: uppercase;
 }
@@ -154,7 +150,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid color-mix(in srgb, var(--text-color, white) 15%, transparent);
   padding-top: 24px;
 }
 

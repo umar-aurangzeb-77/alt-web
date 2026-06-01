@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Syne, DM_Sans, IBM_Plex_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import Navbar from "@/components/layout/Navbar";
@@ -24,10 +25,15 @@ const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-mono",
 });
 
+const hedvigLettersSans = localFont({
+  src: "./fonts/HedvigLettersSans/otf/HedvigLettersSans-Regular.otf",
+  variable: "--font-serif",
+});
+
 export const metadata: Metadata = {
-  title: "Antilinear Technologies — AI & Technology Agency",
+  title: "Antilinear Technologies",
   description:
-    "From generative AI to full-cycle web products — we engineer the future of digital.",
+    ".",
 };
 
 export default function RootLayout({
@@ -38,7 +44,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${dmSans.variable} ${ibmPlexMono.variable}`}
+      className={`${syne.variable} ${dmSans.variable} ${ibmPlexMono.variable} ${hedvigLettersSans.variable}`}
     >
       <body className="bg-[var(--bg)] text-[var(--text-primary)] font-body transition-colors duration-300">
         <ThemeProvider>

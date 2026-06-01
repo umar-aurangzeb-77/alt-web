@@ -2,7 +2,8 @@ import Hero from "@/components/sections/Hero";
 import HorizontalShowcase from "@/components/sections/HorizontalShowcase";
 import DefyLinearity from "@/components/sections/DefyLinearity";
 import Services from "@/components/sections/Services";
-import TechCompatibility from "@/components/sections/TechCompatibility";
+import Industries from "@/components/sections/Industries";
+// import TechCompatibility from "@/components/sections/TechCompatibility";
 
 export default function Home() {
   return (
@@ -11,7 +12,8 @@ export default function Home() {
       {/* <HorizontalShowcase /> */}
       <DefyLinearity />
       <Services />
-      <TechCompatibility />
+      <Industries />
+      {/* <TechCompatibility /> */}
     </>
   );
 }

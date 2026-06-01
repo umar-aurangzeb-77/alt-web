@@ -2,9 +2,9 @@ import FeatureCard from "@/components/ui/FeatureCard";
 import FadeUp from "@/components/ui/FadeUp";
 import Link from "next/link";
 
-interface Props {}
+interface Props { }
 
-export default function AboutPage({}: Props) {
+export default function AboutPage({ }: Props) {
   return (
     <div className="pt-20">
       {/* Page Hero */}
@@ -16,7 +16,7 @@ export default function AboutPage({}: Props) {
             </h1>
           </FadeUp>
           <FadeUp delay={0.2}>
-            <p className="text-[var(--text-muted)] text-xl max-w-2xl mx-auto leading-[1.75]">
+            <p className="font-serif text-[var(--text-primary)] text-2xl max-w-2xl mx-auto leading-[1.75]">
               A small, focused team of engineers and designers obsessed with
               craft.
             </p>
@@ -29,10 +29,10 @@ export default function AboutPage({}: Props) {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <FadeUp>
             <div>
-              <h2 className="font-display font-bold text-4xl text-[var(--text-primary)] mb-6">
+              <h2 className="font-mono font-bold text-4xl text-[var(--text-primary)] mb-6">
                 Our Mission
               </h2>
-              <p className="text-[var(--text-muted)] text-lg leading-[1.75]">
+              <p className="font-serif text-[var(--text-primary)] text-xl leading-[1.75]">
                 We exist to close the gap between what technology can do and
                 what businesses are actually using. We build AI products,
                 scalable web systems, and intelligent data tools — and we do it
@@ -88,12 +88,9 @@ export default function AboutPage({}: Props) {
         <div className="max-w-7xl mx-auto">
           <div className="mb-16">
             <FadeUp>
-              <span className="text-xs tracking-[0.2em] uppercase font-medium text-accent flex items-center mb-4">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent mr-2 mb-0.5" />
+
+              <h2 className="font-mono font-bold text-4xl text-[var(--text-primary)] mt-0 mb-0">
                 Our Values
-              </span>
-              <h2 className="font-display font-bold text-4xl text-[var(--text-primary)] mt-0 mb-0">
-                What Drives Us
               </h2>
             </FadeUp>
           </div>
@@ -177,10 +174,10 @@ export default function AboutPage({}: Props) {
       <section className="py-28 md:py-36 px-6">
         <FadeUp>
           <div className="max-w-5xl mx-auto text-center bg-accent/5 border border-dashed border-accent/20  p-12">
-            <h2 className="font-mono font-normal text-2xl md:text-3xl text-[var(--text-primary)] mb-3 leading-relaxed pb-2">
+            <h2 className="font-mono font-semi bold text-2xl md:text-3xl text-[var(--text-primary)] mb-3 leading-relaxed pb-2">
               Ready to build something great?
             </h2>
-            <p className="text-[var(--text-muted)] mb-8 max-w-lg mx-auto leading-[1.75]">
+            <p className="font-serif text-[var(--text-primary)] text-lg mb-8 max-w-lg mx-auto leading-[1.75]">
               Let's discuss how our technical intelligence can accelerate your
               next big project.
             </p>

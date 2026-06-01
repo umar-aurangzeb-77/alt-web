@@ -31,6 +31,7 @@ body {
   --font-display: var(--font-syne);
   --font-body: var(--font-dm);
   --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
 
   --color-brand-blue: #003459;
   --color-brand-cream: #f1f0ea;

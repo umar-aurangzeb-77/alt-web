@@ -5,12 +5,17 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTheme } from "@/context/ThemeContext";
+import RotateAmplitude from "@/components/animations/RotateAmplitude";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface Props {}
+interface Props { }
 
-export default function DefyLinearity({}: Props) {
+export default function DefyLinearity({ }: Props) {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   const containerRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -18,7 +23,7 @@ export default function DefyLinearity({}: Props) {
   const features = [
     {
       title: "NearVendor",
-      body: "Every deliverable is engineered to spec, on time, without compromise.",
+      body: "A product-first search engine that helps you find products in your locality, saving your time and energy when planning your next shopping spree.",
       logo: "/project-logos/near-vendor-logo.svg",
     },
     {
@@ -28,7 +33,7 @@ export default function DefyLinearity({}: Props) {
     },
     {
       title: "MITS",
-      body: "One team across design, engineering, and strategy — zero silos.",
+      body: "Multiple Identifciation Tracking System is an AI powered, State of the art security system, designed to safeguard socities and cities",
       logo: "/project-logos/mits-logo.svg",
     },
   ];
@@ -74,11 +79,11 @@ export default function DefyLinearity({}: Props) {
         <div className="text-center mb-12">
           <h2
             ref={headingRef}
-            className="text-2xl md:text-4xl font-mono font-normal text-text-primary leading-relaxed pb-4 overflow-visible block"
+            className="text-4xl md:text-6xl font-mono font-normal text-text-primary leading-relaxed pb-4 overflow-visible block"
           >
-            Defying Linearity
+            Our Products
           </h2>
-          <p className="text-text-secondary mt-8 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed">
+          <p className="font-serif text-text-primary mt-8 max-w-2xl mx-auto text-xl md:text-2xl leading-relaxed">
             We move faster, think deeper, and ship smarter
           </p>
         </div>
@@ -95,22 +100,25 @@ export default function DefyLinearity({}: Props) {
               }}
               className="w-full flex justify-center"
             >
-              <ReflectiveCard
-                overlayColor="rgba(0, 32, 54, 0.4)"
-                blurStrength={8}
-                glassDistortion={10}
-                metalness={0.6}
-                roughness={0.3}
-                displacementStrength={15}
-                noiseScale={1.2}
-                specularConstant={1.8}
-                grayscale={0.7}
-                color="#f1f0ea"
-                userName={feature.title}
-                userRole={feature.body}
-                idNumber={`ALT-00${index + 1}`}
-                logo={feature.logo}
-              />
+              <RotateAmplitude amplitude={8}>
+                <ReflectiveCard
+                  overlayColor={isDark ? "rgba(255, 255, 255, 0.4)" : "rgba(0, 32, 54, 0.4)"}
+                  blurStrength={8}
+                  glassDistortion={10}
+                  metalness={0.6}
+                  roughness={0.3}
+                  displacementStrength={15}
+                  noiseScale={1.2}
+                  specularConstant={1.8}
+                  grayscale={0.7}
+                  bgColor={isDark ? "#f1f0ea" : "#002036"}
+                  color={isDark ? "#002036" : "#f1f0ea"}
+                  userName={feature.title}
+                  userRole={feature.body}
+                  idNumber={`ALT-00${index + 1}`}
+                  logo={feature.logo}
+                />
+              </RotateAmplitude>
             </div>
           ))}
         </div>

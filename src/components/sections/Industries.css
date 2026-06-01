@@ -1,0 +1,163 @@
+/* Inverted Theme CSS Variables on the section container, applied ONLY to the cards */
+.industries-section {
+  --ind-card-bg: #f1f0ea;              /* brand-cream */
+  --ind-border: #003459;               /* brand-blue */
+  --ind-border-hover: #002036;         /* darker brand-blue on hover */
+  --ind-text-primary: #003459;         /* brand-blue */
+  --ind-text-secondary: #004271;       /* slightly lighter brand-blue */
+  --ind-svg-fill: #f1f0ea;             /* fill matches card bg to blend */
+  --ind-svg-stroke: #003459;           /* brand-blue stroke */
+  --ind-svg-glow: rgba(0, 52, 89, 0.08);
+  --ind-svg-glow-hover: rgba(0, 52, 89, 0.18);
+}
+
+/* Light mode state (light theme for website) -> Card styles are dark */
+html.light .industries-section {
+  --ind-card-bg: #001f35;              /* brand-blue */
+  --ind-border: #f1f0ea;               /* brand-cream */
+  --ind-border-hover: #ffffff;         /* white on hover */
+  --ind-text-primary: #f1f0ea;         /* brand-cream */
+  --ind-text-secondary: #cbd5e1;       /* light slate */
+  --ind-svg-fill: #001f35;             /* fill matches card bg */
+  --ind-svg-stroke: #f1f0ea;           /* brand-cream stroke */
+  --ind-svg-glow: rgba(255, 255, 255, 0.12);
+  --ind-svg-glow-hover: rgba(255, 255, 255, 0.28);
+}
+
+/* Perspective Viewport Layering */
+.scroll-section-wrapper {
+  will-change: transform;
+}
+
+.card-perspective-container {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  max-width: 1500px;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Pyramid Z-index stack layering */
+.card-index-0 { z-index: 1; }
+.card-index-1 { z-index: 3; }
+.card-index-2 { z-index: 5; }
+.card-index-3 { z-index: 3; }
+.card-index-4 { z-index: 1; }
+
+/* Card base styling */
+.card-base-style {
+  position: absolute;
+  width: 280px;
+  height: 480px;
+  transform-origin: bottom center;
+  will-change: transform, scale, opacity;
+  padding: 0;
+}
+
+/* Double-layer hover wrapper for lifting without GSAP clash */
+.card-hover-wrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 2.2rem;
+  overflow: hidden;
+  border: 1.5px solid var(--ind-border);
+  background: var(--ind-card-bg);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+              box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+              border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              background-color 0.5s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-hover-wrapper:hover {
+  transform: translateY(-16px) scale(1.03);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.45);
+  border-color: var(--ind-border-hover);
+}
+
+/* Canvas top section (55% Height) */
+.canvas-top {
+  height: 55%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background-color: var(--ind-card-bg);
+  transition: background-color 0.5s ease;
+}
+
+/* SVG icon styling and glow shadow */
+.svg-icon-wrapper {
+  position: relative;
+  z-index: 10;
+  filter: drop-shadow(0 0 12px var(--ind-svg-glow));
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+              filter 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.svg-icon-wrapper svg * {
+  transition: stroke 0.5s ease, fill 0.5s ease;
+}
+
+.card-hover-wrapper:hover .svg-icon-wrapper {
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 18px var(--ind-svg-glow-hover));
+}
+
+/* Lower Typography Panel (45% Height) */
+.panel-bottom-white {
+  height: 45%;
+  width: 100%;
+  background-color: var(--ind-card-bg);
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  flex-grow: 1;
+  transition: background-color 0.5s ease;
+}
+
+/* Typography styles matching dark design */
+.industry-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #94a3b8; /* slate-400 */
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.industry-title {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--ind-text-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
+  transition: color 0.5s ease;
+}
+
+.industry-desc {
+  font-size: 0.75rem;
+  font-family: var(--font-body);
+  line-height: 1.5;
+  color: var(--ind-text-secondary);
+  max-width: 95%;
+  margin: 0 auto;
+  transition: color 0.5s ease;
+}
