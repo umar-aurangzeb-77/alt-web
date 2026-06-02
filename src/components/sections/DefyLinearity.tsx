@@ -74,12 +74,12 @@ export default function DefyLinearity({}: Props) {
   );
 
   return (
-    <section className="pt-16 pb-32 md:pt-24 md:pb-48 px-6 bg-bg/50">
+    <section className="pt-12 pb-20 md:pt-20 md:pb-32 lg:pb-48 px-6 bg-bg/50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2
             ref={headingRef}
-            className="text-4xl md:text-6xl font-mono font-normal text-text-primary leading-relaxed pb-4 overflow-visible block"
+            className="text-3xl md:text-5xl lg:text-6xl font-mono font-normal text-text-primary leading-relaxed pb-4 overflow-visible block"
           >
             Our Products
           </h2>
@@ -90,7 +90,7 @@ export default function DefyLinearity({}: Props) {
 
         <div
           ref={containerRef}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 justify-items-center"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 mt-16 md:mt-20 justify-items-center"
         >
           {features.map((feature, index) => (
             <div

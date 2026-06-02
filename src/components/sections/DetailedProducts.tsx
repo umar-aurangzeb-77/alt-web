@@ -24,6 +24,7 @@ interface Product {
   tagline: string;
   description: string;
   features: Feature[];
+  url?: string;
 }
 
 interface Props {}
@@ -44,6 +45,7 @@ export default function DetailedProducts({}: Props) {
         "Bridge the physical-digital retail divide with real-time locality matching.",
       description:
         "A sophisticated hyper-local commerce engine utilizing real-time geospatial indexing, inventory synchronization networks, and AI-driven local search algorithms. It bridges physical retail stores with digital-first consumers, offering instantaneous product discovery, stock levels, and distance routing right in their hands.",
+      url: "https://nearvendor.vercel.app/",
       // metricLabel: "Geofence Query Match Time",
       // metricValue: "Sub-150ms",
       features: [
@@ -62,8 +64,8 @@ export default function DetailedProducts({}: Props) {
               <circle cx="12" cy="10" r="3" />
             </svg>
           ),
-          title: "Geospatial Proximity Match",
-          desc: "Instant sub-second search radius matching based on high-performance GIS databases.",
+          title: "Nearby Product Matching",
+          desc: " Finds the nearest available item you searched for.",
         },
         {
           icon: (
@@ -81,8 +83,8 @@ export default function DetailedProducts({}: Props) {
               <line x1="12" y1="22.08" x2="12" y2="12" />
             </svg>
           ),
-          title: "Real-Time Stock Tracker",
-          desc: "Unified vendor API integrations keeping local storefront inventories 100% accurate.",
+          title: "Boosts Sales of Local vendors",
+          desc: "Local Vendors that are not visisble to consumers gain visual attraction and sales boost.",
         },
         {
           icon: (
@@ -112,7 +114,7 @@ export default function DetailedProducts({}: Props) {
       tagline:
         "Transform charitable giving into a visible, milestone-driven ledger of real-world change.",
       description:
-        "A high-transparency philanthropic orchestrator connecting global donors with local fundraisers and internationally acclaimed NGOs. Powered by secure auditing ledgers and interactive impact tracking, Doneto transforms donation flows from black-box transfers to real-world visual milestones, fostering absolute trust and community action.",
+        "A high-transparency philanthropic orchestrator connecting donors with local fundraisers and acclaimed NGOs. Powered by secure auditing ledgers and interactive impact tracking, Doneto transforms donation flows from black-box transfers to real-world visual milestones, fostering absolute trust and reflecting community action.",
       // metricLabel: "Fund Audit Traceability",
       // metricValue: "100.0%",
       features: [
@@ -184,6 +186,7 @@ export default function DetailedProducts({}: Props) {
         "Multi-camera visual telemetry and neural object classification safeguarding campuses.",
       description:
         "An industrial-grade, AI-powered security orchestrator designed to safeguard smart cities, residential estates, and complex multi-facility campuses. By utilizing advanced multi-camera visual telemetry, neural object classification, and instant anomaly warning systems, MITS delivers active threat prevention and perimeter security.",
+      url: "https://mits-seven.vercel.app/",
       // metricLabel: "Edge Threat Inference",
       // metricValue: "Sub-50ms",
       features: [
@@ -302,7 +305,7 @@ export default function DetailedProducts({}: Props) {
   return (
     <div
       ref={containerRef}
-      className="w-full flex flex-col gap-24 md:gap-32 pb-32"
+      className="w-full flex flex-col gap-16 md:gap-24 lg:gap-32 pb-20 md:pb-32"
     >
       {/* Reusable Icon Gradient Definition matching brand styles */}
       <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
@@ -341,8 +344,10 @@ export default function DetailedProducts({}: Props) {
                     alt={`${product.title} logo`}
                     width={260}
                     height={260}
-                    className={`object-contain max-w-[260px] max-h-[260px] transition-all duration-700 hover:scale-105 ${
+                    className={`object-contain w-full max-w-[180px] md:max-w-[220px] lg:max-w-[260px] max-h-[260px] transition-all duration-700 hover:scale-105 ${
                       product.id === "mits" ? "dark:invert" : ""
+                    } ${
+                      product.id === "doneto" ? "invert dark:invert-0" : ""
                     }`}
                   />
                 ) : (
@@ -362,7 +367,7 @@ export default function DetailedProducts({}: Props) {
               {/* Product Title and Metric */}
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[var(--border)]/15 pb-6">
                 <div>
-                  <h2 className="font-mono text-4xl md:text-5xl font-bold text-[var(--text-primary)]">
+                  <h2 className="font-mono text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--text-primary)]">
                     {product.title}
                   </h2>
                   <p className="font-serif text-lg text-[var(--text-primary)]/80 mt-3 max-w-xl">
@@ -385,6 +390,36 @@ export default function DetailedProducts({}: Props) {
               <p className="font-serif text-base leading-relaxed text-[var(--text-secondary)]">
                 {product.description}
               </p>
+
+              {product.url && (
+                <div className="mt-4">
+                  <a
+                    href={product.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-mono uppercase tracking-wider font-bold transition-all duration-300 hover:opacity-90 active:scale-[0.98] shadow-sm w-fit ${
+                      isDark
+                        ? "bg-[#f1f0ea] text-[#003459]"
+                        : "bg-[#003459] text-[#f1f0ea]"
+                    }`}
+                  >
+                    Visit Now
+                    <svg
+                      className="w-3.5 h-3.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
+                  </a>
+                </div>
+              )}
 
               {/* Technical Features Pillars with Linear Gradient Lucide Icons */}
               <div className="flex flex-col gap-4 mt-2">

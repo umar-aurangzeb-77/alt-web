@@ -129,7 +129,7 @@ export default function Services({ }: Props) {
   );
 
   return (
-    <section className="py-32 md:py-48 px-6 bg-bg">
+    <section className="py-16 md:py-32 lg:py-48 px-6 bg-bg">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20">
           <h2 className="font-mono font-bold text-3xl md:text-4xl text-[var(--text-primary)] leading-relaxed pb-2">
@@ -139,7 +139,7 @@ export default function Services({ }: Props) {
 
         <div
           ref={containerRef}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-14"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-10 md:mt-14"
         >
           {services.map((service, idx) => (
             <div

@@ -40,7 +40,7 @@ export default function Navbar({ }: Props) {
 
   return (
     <header className="sticky top-0 left-0 w-full z-50 backdrop-blur-xl bg-bg/80 border-b border-border transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-[56px] h-[92px] flex items-center justify-between relative w-full">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-[56px] h-[92px] flex items-center justify-between relative w-full">
         {/* Left: Logo */}
         <Link href="/" className="z-10 block">
           <img src={logoSrc} alt="Anti-Linear Technologies Logo" className="h-8 w-auto object-contain" />

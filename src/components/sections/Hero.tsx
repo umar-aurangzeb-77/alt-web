@@ -48,7 +48,7 @@ export default function Hero({ }: Props) {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden py-28 md:py-36 px-6 pt-16 bg-bg transition-colors duration-300"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden py-20 md:py-28 lg:py-36 px-6 pt-16 bg-bg transition-colors duration-300"
     >
       {/* Animation Background Layer */}
       {/* <div className="absolute inset-0 z-1 w-full h-full">
@@ -76,7 +76,7 @@ export default function Hero({ }: Props) {
 
         {/* Heading */}
         <FadeUp delay={0.4}>
-          <h1 className="text-[36px] md:text-[64px] font-mono font-normal text-text-primary leading-[1.05] tracking-tight mb-2">
+          <h1 className="text-[32px] md:text-[48px] lg:text-[64px] font-mono font-normal text-text-primary leading-[1.05] tracking-tight mb-2">
             Anti-Linear <br /> Technologies
           </h1>
         </FadeUp>

@@ -81,7 +81,7 @@ function ProjectCard({
   return (
     <div
       ref={cardRef}
-      className="relative shrink-0 w-[80vw] md:w-[45vw] lg:w-[35vw] aspect-square skew-x-[-5deg]"
+      className="relative shrink-0 w-[85vw] md:w-[45vw] lg:w-[35vw] aspect-square skew-x-[-5deg]"
     >
       {/* The Thick White Base */}
       <div className="absolute inset-0 bg-white rounded-[100px] md:rounded-[110px]" />
@@ -91,7 +91,7 @@ function ProjectCard({
         ref={capRef}
         className={cn(
           "absolute inset-8 bg-brand-blue rounded-[70px] md:rounded-[90px]",
-          "flex items-center justify-center p-8 md:p-12 text-center",
+          "flex items-center justify-center p-6 md:p-8 lg:p-12 text-center",
           "border border-white/10 shadow-[inset_0_0_60px_rgba(0,0,0,0.3)]",
         )}
       >
@@ -178,7 +178,7 @@ export default function HorizontalShowcase() {
 
         <div
           ref={trackRef}
-          className="relative z-10 flex gap-20 md:gap-32 px-20 flex-nowrap items-center will-change-transform"
+          className="relative z-10 flex gap-12 md:gap-20 lg:gap-32 px-10 md:px-20 flex-nowrap items-center will-change-transform"
         >
           {PROJECTS.map((project) => (
             <ProjectCard

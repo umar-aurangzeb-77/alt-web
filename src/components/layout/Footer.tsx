@@ -6,8 +6,8 @@ interface Props { }
 
 export default function Footer({ }: Props) {
   return (
-    <footer className="bg-surface border-t border-border pt-28 pb-4 md:pt-36 md:pb-8 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
+    <footer className="bg-surface border-t border-border pt-16 md:pt-28 lg:pt-36 pb-8 px-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
         {/* Col 1: Logo & Tagline */}
         <div>
           <Link
@@ -28,20 +28,20 @@ export default function Footer({ }: Props) {
 
         {/* Col 2: Links */}
         <div>
-          <h4 className="font-mono font-bold text-xs uppercase tracking-[0.2em] text-text-primary mb-8">
-            Company
+          <h4 className="font-mono font-bold text-xs text-text-primary mb-8">
+            Anti linear Technologies
           </h4>
           <div className="relative pl-5">
             {/* Trunk Line */}
             <div className="absolute left-[5px] top-2 bottom-[10px] w-[1px] bg-text-primary/20" />
-            
+
             <ul className="space-y-4">
               <li className="relative flex items-center">
                 {/* Branch Line */}
                 <div className="absolute -left-[15px] top-1/2 -translate-y-1/2 w-[15px] h-[1px] bg-text-primary/20" />
                 {/* Node Dot */}
                 <div className="absolute -left-[18px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-text-primary/60" />
-                
+
                 <Link
                   href="/services"
                   className="text-text-secondary text-sm hover:text-accent transition-colors pl-2"
@@ -54,7 +54,7 @@ export default function Footer({ }: Props) {
                 <div className="absolute -left-[15px] top-1/2 -translate-y-1/2 w-[15px] h-[1px] bg-text-primary/20" />
                 {/* Node Dot */}
                 <div className="absolute -left-[18px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-text-primary/60" />
-                
+
                 <Link
                   href="/products"
                   className="text-text-secondary text-sm hover:text-accent transition-colors pl-2"
@@ -67,7 +67,7 @@ export default function Footer({ }: Props) {
                 <div className="absolute -left-[15px] top-1/2 -translate-y-1/2 w-[15px] h-[1px] bg-text-primary/20" />
                 {/* Node Dot */}
                 <div className="absolute -left-[18px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-text-primary/60" />
-                
+
                 <Link
                   href="/about"
                   className="text-text-secondary text-sm hover:text-accent transition-colors pl-2"
@@ -80,7 +80,7 @@ export default function Footer({ }: Props) {
                 <div className="absolute -left-[15px] top-1/2 -translate-y-1/2 w-[15px] h-[1px] bg-text-primary/20" />
                 {/* Node Dot */}
                 <div className="absolute -left-[18px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-text-primary/60" />
-                
+
                 <Link
                   href="/contact"
                   className="text-text-secondary text-sm hover:text-accent transition-colors pl-2"
@@ -109,7 +109,7 @@ export default function Footer({ }: Props) {
             href="/contact"
             className="hover:text-bg hover:bg-accent duration-500 transition-all"
           >
-            Start a Project
+            Get Started Today
           </Button>
         </div>
       </div>

@@ -16,9 +16,9 @@ export default function FeatureCard({ icon, title, body, className = "" }: Props
       </div>
 
       {/* Title */}
-      <h3 className="text-2xl mt-8 text-text-primary group-hover:text-accent transition-colors duration-300">
+      <h2 className="font-mono font-normal text-2xl mt-8 text-text-primary group-hover:text-accent transition-colors duration-300">
         {title}
-      </h3>
+      </h2>
 
       {/* Body */}
       <p className="font-serif text-text-secondary text-lg leading-relaxed mt-4 max-w-[340px] mx-auto">
