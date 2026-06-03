@@ -1,27 +1,29 @@
+"use client";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import Image from "next/image";
+import { useTheme } from "@/context/ThemeContext";
 
-interface Props { }
+interface Props {}
 
-export default function Footer({ }: Props) {
+export default function Footer({}: Props) {
+  const { theme } = useTheme();
+  const logoSrc =
+    theme === "light"
+      ? "/assets/Vertical - Black 1.svg"
+      : "/assets/Logo light theme.svg";
   return (
-    <footer className="bg-surface border-t border-border pt-16 md:pt-28 lg:pt-36 pb-8 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+    <footer className="bg-bg border-t border-border pt-16 md:pt-28 lg:pt-36 pb-8 px-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-16">
         {/* Col 1: Logo & Tagline */}
         <div>
           <Link
             href="/"
             className="font-mono font-medium text-xl text-text-primary tracking-tight"
           >
-            <Image
-              src="/assets/Asset 1 2.svg"
-              alt="Logo"
-              width={60}
-              height={60}
-            />
+            <Image src={logoSrc} alt="Logo" width={60} height={60} />
           </Link>
-          <p className="font-serif text-text-primary mt-6 text-base leading-[1.75] max-w-xs">
+          <p className="font-mono text-text-primary mt-6 text-base leading-[1.75] max-w-xs">
             Defying Linearity
           </p>
         </div>
@@ -92,7 +94,47 @@ export default function Footer({ }: Props) {
           </div>
         </div>
 
-        {/* Col 3: Get in touch */}
+        {/* Column 3 : Legal */}
+        <div>
+          <h4 className="font-mono font-bold text-xs text-text-primary mb-8">
+            Legal
+          </h4>
+          <div className="relative pl-5">
+            {/* Trunk Line */}
+            <div className="absolute left-[5px] top-2 bottom-[10px] w-[1px] bg-text-primary/20" />
+
+            <ul className="space-y-4">
+              <li className="relative flex items-center">
+                {/* Branch Line */}
+                <div className="absolute -left-[15px] top-1/2 -translate-y-1/2 w-[15px] h-[1px] bg-text-primary/20" />
+                {/* Node Dot */}
+                <div className="absolute -left-[18px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-text-primary/60" />
+
+                <Link
+                  href="/privacy-policy"
+                  className="text-text-secondary text-sm hover:text-accent transition-colors pl-2"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li className="relative flex items-center">
+                {/* Branch Line */}
+                <div className="absolute -left-[15px] top-1/2 -translate-y-1/2 w-[15px] h-[1px] bg-text-primary/20" />
+                {/* Node Dot */}
+                <div className="absolute -left-[18px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-text-primary/60" />
+
+                <Link
+                  href="/terms-of-service"
+                  className="text-text-secondary text-sm hover:text-accent transition-colors pl-2"
+                >
+                  Terms of Service
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Col 4: Get in touch */}
         <div>
           <h4 className="font-mono font-bold text-xs uppercase tracking-[0.2em] text-text-primary mb-8">
             Get in touch

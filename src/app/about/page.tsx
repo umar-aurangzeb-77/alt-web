@@ -3,9 +3,9 @@ import FadeUp from "@/components/ui/FadeUp";
 import Link from "next/link";
 import Image from "next/image";
 
-interface Props { }
+interface Props {}
 
-export default function AboutPage({ }: Props) {
+export default function AboutPage({}: Props) {
   return (
     <div className="pt-20">
       {/* Page Hero */}
@@ -18,16 +18,19 @@ export default function AboutPage({ }: Props) {
           </FadeUp>
           <FadeUp delay={0.2}>
             <p className="font-serif text-[var(--text-primary)] text-lg md:text-xl max-w-4xl mx-auto leading-[1.75]">
-              We are a premier digital solutions and IT services firm dedicated to engineering
-              custom, enterprise-level software architectures. Operating at the intersection of
-              high-performance technology and strategic business design, we build bespoke
-              systems tailored for the FinTech, E-Commerce, Regulatory, and Governance sectors.
-              Our approach ignores generic, off-the-shelf software models. Instead, we deep-dive
-              into our clients' operational realities to identify underlying inefficiencies, security risks,
-              and infrastructural bottlenecks. By thoroughly analyzing these distinct organizational
-              pain points, we curate highly flexible, robust, and mathematically optimized digital
-              solutions that protect data integrity, streamline regulatory compliance, and accelerate
-              transactional velocity
+              We are a premier digital solutions and IT services firm dedicated
+              to engineering custom, enterprise-level software architectures.
+              Operating at the intersection of high-performance technology and
+              strategic business design, we build bespoke systems tailored for
+              the FinTech, E-Commerce, Regulatory, and Governance sectors. Our
+              approach ignores generic, off-the-shelf software models. Instead,
+              we deep-dive into our clients' operational realities to identify
+              underlying inefficiencies, security risks, and infrastructural
+              bottlenecks. By thoroughly analyzing these distinct organizational
+              pain points, we curate highly flexible, robust, and mathematically
+              optimized digital solutions that protect data integrity,
+              streamline regulatory compliance, and accelerate transactional
+              velocity
             </p>
           </FadeUp>
           <FadeUp delay={0.3}>
@@ -68,7 +71,9 @@ export default function AboutPage({ }: Props) {
                 Our Mission
               </h2>
               <p className="font-serif text-[var(--text-primary)] text-xl leading-[1.75]">
-                We help businesses turn useful technology into working products. We build AI tools, scalable web systems, and data products without the overhead or slow process of a large agency.
+                We help businesses turn useful technology into working products.
+                We build AI tools, scalable web systems, and data products
+                without the overhead or slow process of a large agency.
               </p>
             </div>
           </FadeUp>
@@ -120,7 +125,6 @@ export default function AboutPage({ }: Props) {
         <div className="max-w-7xl mx-auto">
           <div className="mb-16">
             <FadeUp>
-
               <h2 className="font-mono font-normal text-3xl md:text-4xl text-[var(--text-primary)] mt-0 mb-0">
                 Our Values
               </h2>
@@ -211,7 +215,8 @@ export default function AboutPage({ }: Props) {
                 Our Partners
               </h2>
               <p className="font-serif text-[var(--text-secondary)] text-lg max-w-xl leading-relaxed">
-                Collaborating with industry pioneers and forward-thinking enterprises to deliver state-of-the-art solutions.
+                Collaborating with industry pioneers and forward-thinking
+                enterprises to deliver state-of-the-art solutions.
               </p>
             </FadeUp>
           </div>
@@ -281,7 +286,7 @@ export default function AboutPage({ }: Props) {
       {/* CTA Banner */}
       <section className="py-16 md:py-24 lg:py-36 px-6">
         <FadeUp>
-          <div className="max-w-5xl mx-auto text-center bg-accent/5 border border-dashed border-accent/20  p-8 md:p-12">
+          <div className="max-w-5xl mx-auto text-center bg-accent/5 border-t border-b border-dashed border-accent/20  p-8 md:p-12">
             <h2 className="font-mono font-normal text-2xl md:text-3xl text-[var(--text-primary)] mb-3 leading-relaxed pb-2">
               Ready to build something great?
             </h2>
