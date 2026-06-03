@@ -27,9 +27,9 @@ interface Product {
   url?: string;
 }
 
-interface Props {}
+interface Props { }
 
-export default function DetailedProducts({}: Props) {
+export default function DetailedProducts({ }: Props) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
   const containerRef = useRef<HTMLDivElement>(null);
@@ -332,9 +332,8 @@ export default function DetailedProducts({}: Props) {
           >
             {/* Visual Panel - Alternating side based on index. Container removed. */}
             <div
-              className={`product-visual-panel lg:col-span-5 flex justify-center items-center relative py-12 ${
-                isEven ? "lg:order-1" : "lg:order-2"
-              }`}
+              className={`product-visual-panel lg:col-span-5 flex justify-center items-center relative py-12 ${isEven ? "lg:order-1" : "lg:order-2"
+                }`}
             >
               {/* Product Logo directly rendered natively */}
               <div className="relative z-10 flex flex-col items-center justify-center">
@@ -344,11 +343,9 @@ export default function DetailedProducts({}: Props) {
                     alt={`${product.title} logo`}
                     width={260}
                     height={260}
-                    className={`object-contain w-full max-w-[180px] md:max-w-[220px] lg:max-w-[260px] max-h-[260px] transition-all duration-700 hover:scale-105 ${
-                      product.id === "mits" ? "dark:invert" : ""
-                    } ${
-                      product.id === "doneto" ? "invert dark:invert-0" : ""
-                    }`}
+                    className={`object-contain w-full max-w-[180px] md:max-w-[220px] lg:max-w-[260px] max-h-[260px] transition-all duration-700 hover:scale-105 ${product.id === "mits" ? "dark:invert" : ""
+                      } ${product.id === "doneto" ? "invert dark:invert-0" : ""
+                      }`}
                   />
                 ) : (
                   <span className="font-mono text-7xl font-bold">
@@ -360,9 +357,8 @@ export default function DetailedProducts({}: Props) {
 
             {/* Info Panel - Alternating side based on index. All developer badges/tags/dividers removed. */}
             <div
-              className={`product-info-panel lg:col-span-7 flex flex-col justify-start gap-6 ${
-                isEven ? "lg:order-2" : "lg:order-1"
-              }`}
+              className={`product-info-panel lg:col-span-7 flex flex-col justify-start gap-6 ${isEven ? "lg:order-2" : "lg:order-1"
+                }`}
             >
               {/* Product Title and Metric */}
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[var(--border)]/15 pb-6">
@@ -397,11 +393,10 @@ export default function DetailedProducts({}: Props) {
                     href={product.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-mono uppercase tracking-wider font-bold transition-all duration-300 hover:opacity-90 active:scale-[0.98] shadow-sm w-fit ${
-                      isDark
+                    className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-mono uppercase tracking-wider font-bold transition-all duration-300 hover:opacity-90 active:scale-[0.98] shadow-sm w-fit ${isDark
                         ? "bg-[#f1f0ea] text-[#003459]"
                         : "bg-[#003459] text-[#f1f0ea]"
-                    }`}
+                      }`}
                   >
                     Visit Now
                     <svg
