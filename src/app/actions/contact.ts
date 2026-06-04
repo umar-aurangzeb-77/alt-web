@@ -47,12 +47,16 @@ export async function sendContactEmail(formData: unknown) {
               <td style="padding: 12px 0; font-family: 'Courier New', Courier, monospace; font-size: 12px; color: rgba(241, 240, 234, 0.5); width: 35%;">CHANNEL TYPE</td>
               <td style="padding: 12px 0; font-size: 15px; font-weight: 600; color: #daf4ff; text-transform: uppercase;">${formType}</td>
             </tr>
-            ${formType === "corporation" && companyName ? `
+            ${
+              formType === "corporation" && companyName
+                ? `
             <tr style="border-bottom: 1px solid rgba(241, 240, 234, 0.1);">
               <td style="padding: 12px 0; font-family: 'Courier New', Courier, monospace; font-size: 12px; color: rgba(241, 240, 234, 0.5);">COMPANY</td>
               <td style="padding: 12px 0; font-size: 15px; color: #f1f0ea;">${companyName}</td>
             </tr>
-            ` : ""}
+            `
+                : ""
+            }
             <tr style="border-bottom: 1px solid rgba(241, 240, 234, 0.1);">
               <td style="padding: 12px 0; font-family: 'Courier New', Courier, monospace; font-size: 12px; color: rgba(241, 240, 234, 0.5);">INDUSTRY</td>
               <td style="padding: 12px 0; font-size: 15px; color: #f1f0ea;">${industry}</td>
@@ -85,13 +89,16 @@ export async function sendContactEmail(formData: unknown) {
 
   // Determine From/To addresses. Under dev/sandbox, use sandbox addresses.
   const isProd = env.NODE_ENV === "production";
-  const fromEmail = isProd
-    ? "Antilinear Support <support@antilineartech.com>"
-    : "Antilinear Onboarding <onboarding@resend.dev>";
-  
-  const toEmail = isProd
-    ? ["support@antilineartech.com"]
-    : ["delivered@resend.dev"];
+  const fromEmail =
+    // isProd
+    // ? "Antilinear Support <support@antilineartech.com>":
+    "Antilinear Onboarding <onboarding@mail.antilineartech.com>";
+
+  const toEmail =
+    // isProd
+    // ?
+    ["support@antilineartech.com"];
+  // : ["delivered@resend.dev"];
 
   // Send the email via Resend
   const { data, error } = await resend.emails.send(
@@ -103,7 +110,7 @@ export async function sendContactEmail(formData: unknown) {
     },
     {
       idempotencyKey: `contact-form/${email}-${Date.now()}`,
-    }
+    },
   );
 
   if (error) {
