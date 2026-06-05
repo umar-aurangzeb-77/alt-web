@@ -32,14 +32,6 @@ export async function sendContactEmail(formData: unknown) {
         
         <hr style="border: 0; border-top: 1px solid rgba(241, 240, 234, 0.1); margin: 30px 0;" />
         
-        // <h2 style="font-size: 24px; font-weight: 700; color: #f1f0ea; margin-top: 0; margin-bottom: 20px;">
-        //   New Connection Formulated
-        // </h2>
-        
-        // <p style="font-size: 16px; color: rgba(241, 240, 234, 0.8); line-height: 1.6; margin-bottom: 30px;">
-        //   An inquiry has been captured from the website contact channel. The specifications are cataloged below:
-        // </p>
-        
         <!-- Form Data Table -->
         <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
           <tbody>
@@ -74,7 +66,7 @@ export async function sendContactEmail(formData: unknown) {
         
         <!-- Idea Box -->
         <div style="margin-bottom: 30px;">
-          <h4 style="font-family: 'Courier New', Courier, monospace; font-size: 12px; color: rgba(241, 240, 234, 0.5); margin-top: 0; margin-bottom: 10px; text-transform: uppercase;">Idea & Specifications</h4>
+          <h4 style="font-family: 'Courier New', Courier, monospace; font-size: 12px; color: rgba(241, 240, 234, 0.5); margin-top: 0; margin-bottom: 10px; text-transform: uppercase;">Query</h4>
           <div style="background-color: #003256; border: 1px solid rgba(241, 240, 234, 0.1); border-radius: 8px; padding: 20px; font-size: 14px; color: #f1f0ea; line-height: 1.6; white-space: pre-wrap;">${idea}</div>
         </div>
         
