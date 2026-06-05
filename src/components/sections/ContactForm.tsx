@@ -69,7 +69,9 @@ const INDUSTRIES = [
 interface Props {}
 
 export default function ContactForm({}: Props) {
-  const [formType, setFormType] = useState<"individual" | "corporation">("individual");
+  const [formType, setFormType] = useState<"individual" | "corporation">(
+    "individual",
+  );
   const [companyName, setCompanyName] = useState("");
   const [industry, setIndustry] = useState("");
   const [idea, setIdea] = useState("");
@@ -101,66 +103,83 @@ export default function ContactForm({}: Props) {
   const countryDropdownContainerRef = useRef<HTMLDivElement>(null);
 
   // Form Switch / Success Card Transition
-  useGSAP(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const element = formContainerRef.current?.querySelector("[data-animate-root]");
-    if (element) {
-      gsap.fromTo(
-        element,
-        { opacity: 0, y: 10, scale: 0.98 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "power2.out" }
+  useGSAP(
+    () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const element = formContainerRef.current?.querySelector(
+        "[data-animate-root]",
       );
-    }
-  }, { dependencies: [isSubmitted], scope: formContainerRef });
+      if (element) {
+        gsap.fromTo(
+          element,
+          { opacity: 0, y: 10, scale: 0.98 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "power2.out" },
+        );
+      }
+    },
+    { dependencies: [isSubmitted], scope: formContainerRef },
+  );
 
   // Sliding Tab Indicator
-  useGSAP(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (tabIndicatorRef.current) {
-      gsap.to(tabIndicatorRef.current, {
-        xPercent: formType === "individual" ? 0 : 100,
-        x: formType === "individual" ? 0 : 4,
-        duration: 0.3,
-        ease: "power2.out",
-      });
-    }
-  }, { dependencies: [formType] });
+  useGSAP(
+    () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (tabIndicatorRef.current) {
+        gsap.to(tabIndicatorRef.current, {
+          xPercent: formType === "individual" ? 0 : 100,
+          x: formType === "individual" ? 0 : 4,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      }
+    },
+    { dependencies: [formType] },
+  );
 
   // Company Name field mount animation
-  useGSAP(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (formType === "corporation" && companyNameContainerRef.current) {
-      gsap.fromTo(
-        companyNameContainerRef.current,
-        { opacity: 0, y: -10 },
-        { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }
-      );
-    }
-  }, { dependencies: [formType] });
+  useGSAP(
+    () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (formType === "corporation" && companyNameContainerRef.current) {
+        gsap.fromTo(
+          companyNameContainerRef.current,
+          { opacity: 0, y: -10 },
+          { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" },
+        );
+      }
+    },
+    { dependencies: [formType] },
+  );
 
   // Industry Dropdown animation
-  useGSAP(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (isIndustryOpen && industryDropdownBoxRef.current) {
-      gsap.fromTo(
-        industryDropdownBoxRef.current,
-        { opacity: 0, y: 5 },
-        { opacity: 1, y: 0, duration: 0.15, ease: "power1.out" }
-      );
-    }
-  }, { dependencies: [isIndustryOpen] });
+  useGSAP(
+    () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (isIndustryOpen && industryDropdownBoxRef.current) {
+        gsap.fromTo(
+          industryDropdownBoxRef.current,
+          { opacity: 0, y: 5 },
+          { opacity: 1, y: 0, duration: 0.15, ease: "power1.out" },
+        );
+      }
+    },
+    { dependencies: [isIndustryOpen] },
+  );
 
   // Country Dropdown animation
-  useGSAP(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (isCountryOpen && countryDropdownContainerRef.current) {
-      gsap.fromTo(
-        countryDropdownContainerRef.current,
-        { opacity: 0, y: 5 },
-        { opacity: 1, y: 0, duration: 0.15, ease: "power1.out" }
-      );
-    }
-  }, { dependencies: [isCountryOpen] });
+  useGSAP(
+    () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (isCountryOpen && countryDropdownContainerRef.current) {
+        gsap.fromTo(
+          countryDropdownContainerRef.current,
+          { opacity: 0, y: 5 },
+          { opacity: 1, y: 0, duration: 0.15, ease: "power1.out" },
+        );
+      }
+    },
+    { dependencies: [isCountryOpen] },
+  );
 
   // Close dropdowns when clicking outside
   useEffect(() => {
@@ -186,7 +205,7 @@ export default function ContactForm({}: Props) {
   const filteredCountries = COUNTRIES.filter(
     (c) =>
       c.name.toLowerCase().includes(countrySearch.toLowerCase()) ||
-      c.dialCode.includes(countrySearch)
+      c.dialCode.includes(countrySearch),
   );
 
   // Filter industries based on current input text
@@ -194,7 +213,7 @@ export default function ContactForm({}: Props) {
     industry.trim() === ""
       ? INDUSTRIES
       : INDUSTRIES.filter((ind) =>
-          ind.toLowerCase().includes(industry.toLowerCase())
+          ind.toLowerCase().includes(industry.toLowerCase()),
         );
 
   // Form validation handler using Zod
@@ -247,7 +266,9 @@ export default function ContactForm({}: Props) {
     if (res.success) {
       setIsSubmitted(true);
     } else {
-      setErrors({ form: res.error || "Failed to formulate connection. Please try again." });
+      setErrors({
+        form: res.error || "Failed to formulate connection. Please try again.",
+      });
     }
   };
 
@@ -290,7 +311,7 @@ export default function ContactForm({}: Props) {
                     "relative z-10 py-3 rounded-lg text-sm font-mono tracking-wider transition-all duration-300 uppercase flex items-center justify-center gap-2",
                     formType === "individual"
                       ? "text-[var(--bg)] font-bold"
-                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]",
                   )}
                 >
                   <User className="w-4 h-4" /> Individual
@@ -307,7 +328,7 @@ export default function ContactForm({}: Props) {
                     "relative z-10 py-3 rounded-lg text-sm font-mono tracking-wider transition-all duration-300 uppercase flex items-center justify-center gap-2",
                     formType === "corporation"
                       ? "text-[var(--bg)] font-bold"
-                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]",
                   )}
                 >
                   <Building2 className="w-4 h-4" /> Corporation
@@ -345,7 +366,9 @@ export default function ContactForm({}: Props) {
                     }}
                     className={cn(
                       "w-full bg-[var(--surface-2)] border rounded-xl px-4 py-3 text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all duration-300",
-                      errors.companyName ? "border-red-500" : "border-[var(--border)]"
+                      errors.companyName
+                        ? "border-red-500"
+                        : "border-[var(--border)]",
                     )}
                   />
                   {errors.companyName && (
@@ -377,7 +400,9 @@ export default function ContactForm({}: Props) {
                     onFocus={() => setIsIndustryOpen(true)}
                     className={cn(
                       "w-full bg-[var(--surface-2)] border rounded-xl pl-4 pr-10 py-3 text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all duration-300",
-                      errors.industry ? "border-red-500" : "border-[var(--border)]"
+                      errors.industry
+                        ? "border-red-500"
+                        : "border-[var(--border)]",
                     )}
                   />
                   <button
@@ -388,7 +413,7 @@ export default function ContactForm({}: Props) {
                     <ChevronDown
                       className={cn(
                         "w-5 h-5 transition-transform duration-300",
-                        isIndustryOpen && "rotate-180"
+                        isIndustryOpen && "rotate-180",
                       )}
                     />
                   </button>
@@ -419,7 +444,9 @@ export default function ContactForm({}: Props) {
                         className="w-full text-left px-4 py-3 text-sm text-[var(--text-primary)] hover:bg-[var(--surface-3)] transition-colors border-b border-[var(--border)] last:border-0 flex items-center justify-between"
                       >
                         <span>{ind}</span>
-                        {industry === ind && <Check className="w-4 h-4 text-[var(--accent)]" />}
+                        {industry === ind && (
+                          <Check className="w-4 h-4 text-[var(--accent)]" />
+                        )}
                       </button>
                     ))}
                     {filteredIndustries.length === 0 && (
@@ -430,7 +457,9 @@ export default function ContactForm({}: Props) {
                   </div>
                 )}
                 {errors.industry && (
-                  <p className="text-red-500 text-xs font-mono mt-1">{errors.industry}</p>
+                  <p className="text-red-500 text-xs font-mono mt-1">
+                    {errors.industry}
+                  </p>
                 )}
               </div>
 
@@ -443,7 +472,9 @@ export default function ContactForm({}: Props) {
                   <span
                     className={cn(
                       "text-[10px] font-mono",
-                      idea.length < 10 ? "text-[var(--text-muted)]" : "text-emerald-500"
+                      idea.length < 10
+                        ? "text-[var(--text-muted)]"
+                        : "text-emerald-500",
                     )}
                   >
                     {idea.length} characters
@@ -462,11 +493,13 @@ export default function ContactForm({}: Props) {
                   rows={4}
                   className={cn(
                     "w-full bg-[var(--surface-2)] border rounded-xl px-4 py-3 text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all duration-300 resize-none",
-                    errors.idea ? "border-red-500" : "border-[var(--border)]"
+                    errors.idea ? "border-red-500" : "border-[var(--border)]",
                   )}
                 />
                 {errors.idea && (
-                  <p className="text-red-500 text-xs font-mono mt-1">{errors.idea}</p>
+                  <p className="text-red-500 text-xs font-mono mt-1">
+                    {errors.idea}
+                  </p>
                 )}
               </div>
 
@@ -488,11 +521,13 @@ export default function ContactForm({}: Props) {
                   }}
                   className={cn(
                     "w-full bg-[var(--surface-2)] border rounded-xl px-4 py-3 text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all duration-300",
-                    errors.email ? "border-red-500" : "border-[var(--border)]"
+                    errors.email ? "border-red-500" : "border-[var(--border)]",
                   )}
                 />
                 {errors.email && (
-                  <p className="text-red-500 text-xs font-mono mt-1">{errors.email}</p>
+                  <p className="text-red-500 text-xs font-mono mt-1">
+                    {errors.email}
+                  </p>
                 )}
               </div>
 
@@ -509,14 +544,16 @@ export default function ContactForm({}: Props) {
                       onClick={() => setIsCountryOpen(!isCountryOpen)}
                       className="flex items-center gap-1.5 bg-[var(--surface-2)] border border-[var(--border)] rounded-xl px-3 py-3 text-[var(--text-primary)] hover:bg-[var(--surface-3)] transition-colors h-[48px] focus:outline-none focus:border-accent"
                     >
-                      <span className="text-lg leading-none">{selectedCountry.flag}</span>
+                      <span className="text-lg leading-none">
+                        {selectedCountry.flag}
+                      </span>
                       <span className="font-mono text-sm font-semibold">
                         {selectedCountry.dialCode}
                       </span>
                       <ChevronDown
                         className={cn(
                           "w-4 h-4 text-[var(--text-muted)] transition-transform",
-                          isCountryOpen && "rotate-180"
+                          isCountryOpen && "rotate-180",
                         )}
                       />
                     </button>
@@ -564,7 +601,9 @@ export default function ContactForm({}: Props) {
                               className="flex items-center justify-between px-2.5 py-2 rounded-lg hover:bg-[var(--surface-3)] transition-colors text-left text-xs"
                             >
                               <div className="flex items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
-                                <span className="text-base flex-shrink-0">{c.flag}</span>
+                                <span className="text-base flex-shrink-0">
+                                  {c.flag}
+                                </span>
                                 <span className="text-[var(--text-primary)] font-medium truncate">
                                   {c.name}
                                 </span>
@@ -599,12 +638,16 @@ export default function ContactForm({}: Props) {
                     }}
                     className={cn(
                       "flex-grow bg-[var(--surface-2)] border rounded-xl px-4 py-3 text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all duration-300 h-[48px]",
-                      errors.phone ? "border-red-500" : "border-[var(--border)]"
+                      errors.phone
+                        ? "border-red-500"
+                        : "border-[var(--border)]",
                     )}
                   />
                 </div>
                 {errors.phone && (
-                  <p className="text-red-500 text-xs font-mono mt-1">{errors.phone}</p>
+                  <p className="text-red-500 text-xs font-mono mt-1">
+                    {errors.phone}
+                  </p>
                 )}
               </div>
             </div>
@@ -638,21 +681,18 @@ export default function ContactForm({}: Props) {
         </div>
       ) : (
         // Success/Thank-You Card State
-        <div
-          data-animate-root
-          className="text-center py-8 space-y-6"
-        >
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/25 mb-2 animate-bounce">
+        <div data-animate-root className="text-center py-8 space-y-6">
+          {/* <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/25 mb-2 fill-white">
             <Sparkles className="w-8 h-8" />
-          </div>
+          </div> */}
 
           <div className="space-y-2">
             <h2 className="font-display font-bold text-3xl text-[var(--text-primary)]">
               Connection Formulated
             </h2>
             <p className="font-serif text-[var(--text-secondary)] text-sm max-w-md mx-auto">
-              Your specifications have been cataloged. Our engineers will audit details and reach
-              out within 24 hours.
+              Your specifications have been cataloged. Our engineers will audit
+              details and reach out within 24 hours.
             </p>
           </div>
 
@@ -660,7 +700,9 @@ export default function ContactForm({}: Props) {
           <div className="bg-[var(--surface-2)] border border-[var(--border)] rounded-2xl p-6 text-left max-w-md mx-auto space-y-3 font-mono text-xs">
             <div className="flex justify-between border-b border-[var(--border)] pb-2">
               <span className="text-[var(--text-muted)]">CHANNEL</span>
-              <span className="text-[var(--text-primary)] uppercase">{formType}</span>
+              <span className="text-[var(--text-primary)] uppercase">
+                {formType}
+              </span>
             </div>
             {formType === "corporation" && companyName && (
               <div className="flex justify-between border-b border-[var(--border)] pb-2">
@@ -678,7 +720,9 @@ export default function ContactForm({}: Props) {
             </div>
             <div className="flex justify-between border-b border-[var(--border)] pb-2">
               <span className="text-[var(--text-muted)]">EMAIL</span>
-              <span className="text-[var(--text-primary)] truncate max-w-[200px]">{email}</span>
+              <span className="text-[var(--text-primary)] truncate max-w-[200px]">
+                {email}
+              </span>
             </div>
             <div className="flex justify-between pb-1">
               <span className="text-[var(--text-muted)]">CONTACT</span>

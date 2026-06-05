@@ -75,7 +75,7 @@ export default function DefyLinearity({}: Props) {
 
   return (
     <section className="pt-12 pb-20 md:pt-20 md:pb-32 lg:pb-48 px-6 bg-bg/50">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto flex flex-col items-center">
         <div className="text-center mb-12">
           <h2
             ref={headingRef}
@@ -98,7 +98,7 @@ export default function DefyLinearity({}: Props) {
               ref={(el) => {
                 cardsRef.current[index] = el;
               }}
-              className="w-full flex justify-center"
+              className="w-full flex justify-center items-center"
             >
               <RotateAmplitude amplitude={8}>
                 <ReflectiveCard

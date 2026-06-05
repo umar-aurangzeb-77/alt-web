@@ -32,13 +32,13 @@ export async function sendContactEmail(formData: unknown) {
         
         <hr style="border: 0; border-top: 1px solid rgba(241, 240, 234, 0.1); margin: 30px 0;" />
         
-        <h2 style="font-size: 24px; font-weight: 700; color: #f1f0ea; margin-top: 0; margin-bottom: 20px;">
-          New Connection Formulated
-        </h2>
+        // <h2 style="font-size: 24px; font-weight: 700; color: #f1f0ea; margin-top: 0; margin-bottom: 20px;">
+        //   New Connection Formulated
+        // </h2>
         
-        <p style="font-size: 16px; color: rgba(241, 240, 234, 0.8); line-height: 1.6; margin-bottom: 30px;">
-          An inquiry has been captured from the website contact channel. The specifications are cataloged below:
-        </p>
+        // <p style="font-size: 16px; color: rgba(241, 240, 234, 0.8); line-height: 1.6; margin-bottom: 30px;">
+        //   An inquiry has been captured from the website contact channel. The specifications are cataloged below:
+        // </p>
         
         <!-- Form Data Table -->
         <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
