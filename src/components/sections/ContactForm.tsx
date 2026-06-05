@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { contactFormSchema } from "@/lib/schemas/contact";
-import { sendContactEmail } from "@/app/actions/contact";
+import { sendContactEmail } from "@/app/api/actions/contact";
 
 interface Country {
   name: string;

@@ -25,7 +25,7 @@ export async function sendContactEmail(formData: unknown) {
         <!-- Logo Header -->
         <div style="margin-bottom: 30px; text-align: center;">
           <img src="https://antilineartech.com/assets/Logo%20light%20theme.svg" alt="Antilinear Technologies" width="180" style="margin: 0 auto 10px auto; display: block; max-width: 100%; border: 0;" />
-          <div style="font-family: 'Courier New', Courier, monospace; font-size: 14px; color: #daf4ff; letter-spacing: 0.15em; font-weight: bold; text-transform: uppercase;">
+          <div style="font-family: 'Courier New', Courier, monospace; font-size: 14px; color: #f1f0ea; letter-spacing: 0.15em; font-weight: bold; text-transform: uppercase;">
             Antilinear Technologies
           </div>
         </div>
@@ -99,6 +99,7 @@ export async function sendContactEmail(formData: unknown) {
       to: toEmail,
       subject: `New Connection Formulated: ${formType === "corporation" ? companyName : "Individual"}`,
       html: htmlContent,
+      tags: [{ name: "visitor_email", value: email }],
     },
     {
       idempotencyKey: `contact-form/${email}-${Date.now()}`,
