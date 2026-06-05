@@ -90,7 +90,7 @@ export async function POST(request: Request) {
         to: toEmail,
         subject: `New Connection Formulated: ${formType === "corporation" ? companyName : "Individual"}`,
         html: htmlContent,
-        tags: [{ name: "visitor_email", value: email }],
+        tags: [{ name: "visitor_email", value: Buffer.from(email).toString("hex") }],
       },
       {
         idempotencyKey: `contact-form/${email}-${Date.now()}`,

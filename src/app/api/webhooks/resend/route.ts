@@ -80,10 +80,10 @@ export async function POST(request: Request) {
         `Delivery failed. Reason: ${emailData?.error?.message || "Unknown error"}`,
       );
 
-      // Extract original visitor's email from metadata
-      const visitorEmail = emailData?.tags?.visitor_email;
+      // Extract original visitor's email from tags
+      const encodedEmail = emailData?.tags?.visitor_email;
 
-      if (!visitorEmail) {
+      if (!encodedEmail) {
         console.warn(
           "No visitor email found in webhook tags. Cannot notify sender.",
         );
@@ -92,6 +92,8 @@ export async function POST(request: Request) {
           { status: 200 },
         );
       }
+
+      const visitorEmail = Buffer.from(encodedEmail, "hex").toString("utf-8");
 
       // Fire delivery failure alert to the visitor
       await resend.emails.send({
