@@ -26,14 +26,13 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 const hedvigLettersSans = localFont({
-  src: "./fonts/HedvigLettersSans/otf/HedvigLettersSans-Regular.otf",
+  src: "../../public/fonts/HedvigLettersSans/otf/HedvigLettersSans-Regular.otf",
   variable: "--font-serif",
 });
 
 export const metadata: Metadata = {
   title: "Antilinear Technologies",
-  description:
-    ".",
+  description: ".",
 };
 
 export default function RootLayout({
