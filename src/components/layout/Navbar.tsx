@@ -49,7 +49,12 @@ export default function Navbar({}: Props) {
       : "/assets/Logo light theme.svg";
 
   return (
-    <header className="sticky top-0 left-0 w-full z-50 backdrop-blur-xl bg-bg/80 border-b border-border transition-colors duration-300">
+    <header
+      className="sticky top-0 left-0 w-full z-50 backdrop-blur-xl border-b border-border transition-colors duration-300"
+      style={{
+        backgroundColor: "color-mix(in srgb, var(--bg) 80%, transparent)",
+      }}
+    >
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-[56px] h-[92px] flex items-center justify-between relative w-full">
         {/* Left: Logo */}
         <Link href="/" className="z-10 block">
@@ -124,7 +129,10 @@ export default function Navbar({}: Props) {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 top-100 bg-bg/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-8 md:hidden transition-colors duration-300">
+        <div
+          className="absolute left-0 top-[92px] w-full h-[calc(100vh-92px)] backdrop-blur-xl z-50 flex flex-col items-center justify-start pt-20 gap-8 md:hidden transition-colors duration-300 overflow-y-auto"
+          style={{ backgroundColor: "var(--bg)" }}
+        >
           <Link
             href="/services"
             className="text-4xl font-display font-bold text-text-primary"
